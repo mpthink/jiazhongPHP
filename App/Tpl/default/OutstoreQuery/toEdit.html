@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <css href="__PUBLIC__/css/admincp.css" />
+
+    <!-- autocomplete -->
+    <link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+    <script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+            color:#2E6E9E;
+        }
+    </style>
+    <!-- autocomplete -->
+
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+    <!-- datepicker -->
+
+    <!-- button -->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+    <!-- button -->
+
+</head>
+<body>
+<div class="container">
+  <h3>出仓编辑</h3>
+  <form action="__URL__/doEdit" method="post">
+    <input name='osm_id' type='hidden' value='<?php echo $main["osm_id"]; ?>'>
+      <table width="100%">
+          <tr>
+              <td width="10%" align="right">客户单位：</td>
+              <td width="30"><input name="osm_buyerunit" type="text" id="osm_buyerunit" value="<?php echo $main['osm_buyerunit'] ?>" size="30" /></td>
+              <td width="10%" align="right">客户单据号：</td>
+              <td width="20%"><input name="osm_danju_no" type="text" id="osm_danju_no" value="<?php echo $main['osm_danju_no'] ?>" size="20" /></td>
+              <td width="10%" align="right">客户单据日期：</td>
+              <td width="20%" align="left"><input name="osm_danju_date" type="text" id="osm_danju_date" value="<?php echo substr($main['osm_danju_date'],0,10) ?>" size="20" /></td>
+
+          </tr>
+
+          <tr>
+              <td width="10%" align="right">流水编号：</td>
+              <td width="30%"><input name="osm_sn" type="text" id="osm_sn" size="30" value="<?php echo $main['osm_sn'] ?>" /></td>
+              <td width="10%" align="right">搬运组：</td>
+              <td width="20%"><input name="osm_carry" type="text" id="osm_carry" value="<?php echo $main['osm_carry'] ?>" size="20" /></td>
+              <td width="10%" align="right">车牌号：</td>
+              <td width="20%"><input name="osm_phone" type="text" id="osm_phone" value="<?php echo $main['osm_phone'] ?>" size="20" /></td>
+
+          </tr>
+
+		  <tr>
+              <td width="10%" align="right">收货人：</td>
+              <td width="30%">
+				<select name='osm_deliver' id="osm_deliver">
+                      <option value=''>--请选择--</option>
+                      <?php foreach($list_deliver as $key=>$row_deliver){ ?>
+                      <option value="<?php echo $row_deliver['pddeliver_id']?>" <?php if($row_deliver['pddeliver_id']==$deliver['pddeliver_id'])echo "selected='true'" ?>><?php echo $row_deliver['pddeliver_name']?></option>
+                      <?php }?>
+                  </select>
+			  </td>
+			  <td width="10%" align="right">收货人地址：</td>
+              <td width="20%"><input name="osm_deliver_address" type="text" id="osm_deliver_address" size="30" value="<?php echo $deliver['pddeliver_address']; ?>" disabled /></td>
+              <td width="10%" align="right">收货人电话：</td>
+              <td width="20%"><input name="osm_deliver_phone" type="text" id="osm_deliver_phone" size="20" value="<?php echo $deliver['pddeliver_phone']; ?>" disabled /></td>
+              
+          </tr>
+		  
+          <tr>
+              <td width="10%" align="right">单据备注：</td>
+              <td width="60%" colspan="3">
+                  <input name="osm_remark" type="text" id="osm_remark" value="<?php echo $main['osm_remark'] ?>" size="45" />
+
+              </td>
+              <td width="10%" align="right">收货单位：</td>
+              <td width="20%"><input name="osm_deliver_note" type="text" id="osm_deliver_note" size="20" value="<?php echo $deliver['pddeliver_note']; ?>" disabled /></td>
+          </tr>
+		  
+		  <tr>
+			<td width="10%" align="right"></td>
+              <td width="30%">
+              </td>
+              <td width="10%" align="right"></td>
+              <td width="20%">
+              </td>
+              <td width="10%"></td>
+              <td width="20%"><input class="btn" type="button" value="添加项" id="btnAdd"/></td>
+		  </tr>
+      </table>
+
+
+    <div class="mainbox">
+    <table width="100%" class="datalist fixwidth" id="table">
+      <tr>
+        <th>序号</th>
+          <th>品名规格</th>
+		  <th>编码</th>
+          <th>类别</th>
+          <th>质量类别</th>
+          <th>单位</th>
+
+          <th>保质期(天)</th>
+		  <th>生产日期</th>
+          <th>应发数量</th>
+          <th>实发数量</th>
+
+          <!--<th>总价</th>-->
+          <th>仓库</th>
+          <!-- <th>备注</th> -->
+        <th>操作</th>
+      </tr>
+      <?php foreach($list_sub as $key=>$row_sub){ ?>
+        <tr id='row_<?php echo $key; ?>'>
+
+          <td align='center'><?php echo $key+1; ?></td>
+          <td align='center'>
+              <input name='oss_prodname[]' index='<?php echo $key; ?>' type='text' id='oss_prodname_<?php echo $key; ?>' size='20' value="<?php echo $row_sub['oss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
+          </td>
+		  <td align='center'><input name='oss_code[]' type='text' id='oss_code_<?php echo $key; ?>' size='25' value="<?php echo $row_sub['prod_code']; ?>" disabled="disabled"/></td>
+		  
+          <td align='center'><input name='oss_cate_name[]' type='text' id='oss_cate_name_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['pdca_name']; ?>" disabled="disabled"/></td>
+
+          <td align='center'>
+              <select name='oss_quality[]' id='oss_quality'>
+                  <?php foreach($list_quality as $row_quality){ ?>
+                  <option value='<?php echo $row_quality['pdqu_name']; ?>' <?php if($row_quality['pdqu_name']==$row_sub['oss_quality'])echo "selected='true'" ?>><?php echo $row_quality['pdqu_name']; ?></option>
+                  <?php } ?>
+              </select>
+
+
+          </td>
+          <td align='center'><input name='oss_unit[]' type='text' id='oss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>" disabled /></td>
+		  <td align='center'><input name='oss_life[]' type='text' id='oss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
+		  <td align='center'><input name='oss_make_date[]' type='text' id='oss_make_date_<?php echo $key; ?>' size='12' value="<?php echo substr($row_sub['oss_make_date'],0,10); ?>" readonly /></td>
+		  
+          <td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_plancount']; ?>"/></td>
+          <td align='center'><input name='oss_count[]' type='text' id='oss_count_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_count']; ?>" onblur='compute(<?php echo $key; ?>)'/></td>
+
+
+          <input name='oss_total[]' type='hidden' id='oss_total_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_total']; ?>"/>
+          <td align='center'>
+               <input name='oss_store_name[]' id='oss_store_name_<?php echo $key; ?>' size='16' value="<?php echo $row_sub['sto_name']."/".$row_sub['sto_kuwei_name']; ?>" disabled />
+          </td>
+
+          <td align='center'>
+              <a href='#' name='linkDelete' onclick='deleteRow(<?php echo $key; ?>)'>删除</a>
+              <input name='oss_prod[]' id="oss_prod_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["oss_prod"]; ?>'>
+              <input name='oss_cate[]' id="oss_cate_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["oss_cate"]; ?>'>
+              <input name='oss_insubid[]' id="oss_insubid_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["oss_insubid"]; ?>'>
+			  
+			  <input name='oss_store_id[]' id="oss_store_id_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["sto_id"]; ?>'>
+          </td>
+          
+          
+	  </tr>
+      <?php } ?>
+      <tr class="nobg">
+        <td></td>
+        <td class="tdpage" colspan="8"></td>
+      </tr>
+    </table>
+    </div>
+    制单：<input name="osm_writer" type="text" id="osm_writer" size="20" value="<?php echo $main['osm_writer'] ?>"/>&nbsp;&nbsp;
+    <input class="btn" type="submit" value="保存" />&nbsp;&nbsp;
+    <input class="btn" type="button" value="返回" onclick="window.history.back()"/>
+  </form>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/outstorequery_toEdit.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />
+

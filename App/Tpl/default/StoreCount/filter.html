@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <js href="__PUBLIC__/js/jquery/jquery-1.7.1.js"/>
+    <css href="__PUBLIC__/css/admincp.css"/>
+
+
+    <!-- autocomplete -->
+    <link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+    <script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+            color: #2E6E9E;
+        }
+    </style>
+
+    <!-- button -->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+    <!-- button -->
+
+
+</head>
+<body>
+<div class="container">
+    <h3>库存统计 &nbsp;&nbsp;&nbsp;&nbsp;<input class="btn" type="button" value="返回" onclick="window.history.back()"/></h3>
+
+    <div class="mainbox">
+        <form action="" method="post">
+            <table class="datalist fixwidth">
+                <tr>
+                    <th>品名规格</th>
+                    <th>类别</th>
+                    <th>质量类别</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>总价</th>
+                </tr>
+
+                <?php foreach($list2 as $key=>$row){ ?>
+                <tr>
+                    <td style="text-align:center">
+                        <a href="__URL__/filter/iss_prod/<?php echo $row["iss_prod"]; ?>"><?php echo $row["prod_name"]; ?></a>
+                    </td>
+                    <td style="text-align:center">
+                        <a href="__URL__/filter/iss_cate/<?php echo $row["iss_cate"]; ?>"><?php echo $row["pdca_name"]; ?>
+                    </td>
+
+                    <td style="text-align:center">
+                        <a href="__URL__/filter/iss_quality/<?php echo $row["iss_quality"]; ?>"><?php echo $row["iss_quality"]; ?>
+
+                    </td>
+
+                    <td style="text-align:center"><?php echo $row["iss_price"]; ?></td>
+                    <td style="text-align:center"><?php echo $row["count"]; ?></td>
+                    <td style="text-align:center"><?php echo $row["total"]; ?></td>
+                </tr>
+                <?php } ?>
+                <tr class="nobg">
+                    <td colspan="8" align="center"><?php echo $page; ?></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/instorebook_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120"/>

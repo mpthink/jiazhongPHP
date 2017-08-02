@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- dialog -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/external/jquery.bgiframe-2.1.2.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.mouse.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.draggable.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.dialog.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.resizable.js"></script>
+<!-- dialog -->
+<!--
+    <script language="JavaScript" src="__PUBLIC__/js/jquery/jquery.tableresizer.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function()
+        {
+            var opts =
+            {
+                col_border:"2px solid #B5CFD9"
+            };
+
+            $("#test123").tableresizer(opts);
+        });
+    </script>
+-->
+<!-- datepicker -->
+<!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+<!-- datepicker -->
+
+<!-- autocomplete -->
+<!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>-->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+<style>
+.ui-autocomplete-category {
+	font-weight: bold;
+	padding: .2em .4em;
+	margin: .8em 0 .2em;
+	line-height: 1.5;
+	color:#2E6E9E;
+}
+</style>
+<!-- autocomplete -->
+
+<!-- button -->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+
+</head>
+<body>
+<div class="container">
+  <h3>出仓查询</h3>
+    <table>
+        <form action="__URL__/exportOSS" method="post">
+        <tr>
+            <td>
+                <select name="searchBy" id="searchBy">
+                    <option value="osm_danju_no" <?php if($searchBy=='ism_danju_no'){echo "selected='true'";}; ?>>客户单据号</option>
+                    <option value="osm_buyerunit" <?php if($searchBy=='osm_buyerunit'){echo "selected='true'";}; ?>>客户单位</option>
+                    <option value="osm_operator" <?php if($searchBy=='osm_operator'){echo "selected='true'";} ?>>勾单人</option>
+                    <option value="osm_writer" <?php if($searchBy=='osm_writer'){echo "selected='true'";} ?>>制单人</option>
+                    <option value="osm_carry	" <?php if($searchBy=='osm_carry'){echo "selected='true'";} ?>>搬运组</option>
+                    <option value="osm_status" <?php if($searchBy=='osm_status'){echo "selected='true'";} ?>>单据状态</option>
+                </select>
+                <input type="text" name="keyword" id="keyword"  size="30" value="<?php echo $keyword; ?>"/>&nbsp;&nbsp;
+                <input type="button" class="btn" id="fastSearch" value="快查"/>&nbsp;&nbsp;
+                <input type="button" class="btn" id="button2" value="查询" onclick="toSearch()" />&nbsp;&nbsp;
+                <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2){ ?><input type="button" id="btnAdd" value="添加" class="btn"/><?php } ?>
+            </td>
+            <td>
+                    <input name="out_buyerunit" type="hidden" id="out_buyerunit" value="<?php echo $out_buyerunit;?>" size="30" />
+                    <input name="out_danju_no" type="hidden" id="out_danju_no" value="<?php echo $out_danju_no;?>" size="30" />
+                    <input name="out_prodname" type="hidden" id="out_prodname" value="<?php echo $out_prodname;?>" size="30" />
+                    <input name="out_store" type="hidden" id="out_store" value="<?php echo $out_store;?>" size="30" />
+                    <input name="out_date_start" type="hidden" id="out_date_start" value="<?php echo $out_date_start;?>" size="30" />
+                    <input name="out_date_end" type="hidden" id="out_date_end" value="<?php echo $out_date_end;?>" size="30" />
+                    <input name="out_writer" type="hidden" id="out_writer" value="<?php echo $out_writer;?>" size="30" />
+                    <input name="out_operator" type="hidden" id="out_operator" value="<?php echo $out_operator;?>" size="30" />
+                    <input name="out_status" type="hidden" id="out_status" value="<?php echo $out_status;?>" size="30" />
+					<!--add for danju-->
+				   <input name="danju_date_start" type="hidden" id="danju_date_start" value="<?php echo $danju_date_start;?>" size="30" />
+                   <input name="danju_date_end" type="hidden" id="danju_date_end" value="<?php echo $danju_date_end;?>" size="30" />
+                    <input class="btn" type="submit" value="Excel导出" />
+            </td>
+        </tr>
+        </form>
+    </table>
+
+
+  <div class="mainbox">
+    <form action="admin.php?m=cache&a=update" method="post">
+      <table width="100%" class="datalist fixwidth" id="test123">
+        <tr>
+          <!-- <th>流水编号</th> -->
+
+            <th>客户单据号</th>
+            <th>单据状态</th>
+
+            <th>品名规格</th>
+            <th>应发</th>
+            <th>实发</th>
+            <th>体积</th>
+          <!--<th>总金额</th> -->
+          <th>客户单位</th>
+          <!-- <th>联系电话</th> -->
+          <th>搬运组</th>
+          <th>勾单人</th>
+          <th>制单人</th>
+            <th>制单日期</th>
+            <th>单据日期</th>
+            <th>勾单日期</th>
+          <th>操作</th>
+        </tr>
+        <?php foreach($list as $key=>$row){ ?>
+        <tr>
+         <!-- <td align="center"><a href="__URL__/view/osm_id/<?php echo $row["osm_id"]; ?>"><?php echo $row["osm_sn"]; ?></a></td> -->
+
+            <td align="center"><a href="__URL__/view/osm_id/<?php echo $row["osm_id"]; ?>"><?php echo $row["osm_danju_no"]; ?></a></td>
+            <td align="center">
+                <?php
+                if($row["osm_status"]==2){echo "<font color='#0000FF'>已复核</font>";};
+                if($row["osm_status"]==1){echo "<font color='green'>已勾单</font>";};
+                if($row["osm_status"]==0){echo "<font color='red'>未勾单</font>";};
+                if($row["osm_status"]==-1){echo "<font color='#ff7f50'>未提交</font>";};
+
+                ?></td>
+
+            <td align="center"><?php echo $row["oss_prodname"]; ?></td>
+            <td align="center"><?php echo $row["oss_plancount"]; ?></td>
+            <td align="center"><?php echo $row["oss_count"]; ?></td>
+            <td align="center"><?php if($row["prod_volume"]!=0.00) echo $row["prod_volume"]; ?></td>
+
+          <!-- <td align="center"><?php echo $row["count"]; ?></td> -->
+          <!-- <td align="center"><?php echo $row["total"]; ?></td> -->
+          <td align="center"><?php echo $row["osm_buyerunit"]; ?></td>
+            <!-- <td align="center"><?php echo $row["osm_phone"]; ?></td> -->
+            <td align="center"><?php echo $row["osm_carry"]; ?></td>
+            <td align="center"><?php echo $row["osm_operator"]; ?></td>
+            <td align="center"><?php echo $row["osm_writer"]; ?></td>
+            <td align="center"><?php echo substr($row["osm_date"],0,10); ?></td>
+            <td align="center"><?php echo substr($row["osm_danju_date"],0,10); ?></td>
+            <td align="center"><?php echo substr($row["osm_status_time"],0,10); ?></td>
+
+            <td align="center">
+                <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==5){ ?>
+                <?php if($row["osm_status"]==-1){ ?>
+                <a href="__URL__/toEdit/osm_id/<?php echo $row["osm_id"]; ?>">编辑<?php echo $row["ism_status"]?></a>&nbsp;&nbsp;
+                <?php }else{ ?>
+                        <font color="gray">编辑</font>&nbsp;&nbsp;
+                <?php } }?>
+
+                &nbsp;&nbsp;
+                <?php if($_SESSION['user']['user_type']==1){ ?>
+                <a href="#" onclick="del(<?php echo $row["osm_id"]; ?>)">删除</a>
+                <?php } ?>
+
+
+            </td>
+          </tr>
+          <?php } ?>
+
+          <tr>
+              <td colspan="2"></td>
+              <td align="center">合计：</td>
+              <td align="center"><?php echo $plan_count; ?></td>
+              <td align="center"><?php echo $real_count; ?></td>
+              <td colspan="10"></td>
+          </tr>
+
+          <tr class="nobg">
+            <td colspan="15" align="center"><?php echo $page; ?></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div id="dialog" title="出仓查询" style="display:none">
+      <br><br>
+      <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+          <td height="35" align="right">客户单据号： </td>
+          <td align="left"><input name="osm_danju_no" type="text" id="osm_danju_no" size="28" /></td>
+          <td align="right">客户单位： </td>
+          <td align="left"><input name="osm_buyerunit" type="text" id="osm_buyerunit" size="28" value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>
+        </tr>
+        <tr>
+          <td height="35" align="right">勾单人： </td>
+          <td align="left"><input name="osm_operator" type="text" id="osm_operator" size="28" /></td>
+          <td align="right">产品：</td>
+          <td align="left"><input name="oss_prodname" type="text" id="oss_prodname" size="28" value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>
+        </tr>
+        <tr>
+          <td height="35" align="right">制单人：</td>
+          <td align="left"><input name="osm_writer" type="text" id="osm_writer" size="28" /></td>
+          <td align="right">仓库：</td>
+          <td align="left"><input name="oss_store" type="text" id="oss_store" size="28" /></td>
+        </tr>
+        <tr>
+          <td height="35" align="right">制单日期：</td>
+          <td align="left">从&nbsp;<input name="osm_date_start" type="text" class="textfield01" id="osm_date_start" size="10" />&nbsp;到&nbsp;<input name="osm_date_end" type="text" class="textfield01" id="osm_date_end" size="10" /></td>
+          <td align="right">单据状态</td>
+          <td align="left">
+              <select name="osm_status" id="osm_status">
+                  <option value="">所有状态</option>
+                  <option value="-1">未提交</option>
+                  <option value="0">未勾单</option>
+                  <option value="1">已勾单</option>
+                  <option value="2">已复核</option>
+              </select>
+          </td>
+        </tr>
+		<tr>
+		  <td height="35" align="right">单据日期：</td>
+		  <td align="left">从&nbsp;<input name="osm_danju_start" type="text" class="textfield01" id="osm_danju_start" size="10" />&nbsp;到&nbsp;<input name="osm_danju_end" type="text" class="textfield01" id="osm_danju_end" size="10" /></td>
+		   <td align="right"></td>
+		  <td align="left"></td> 
+		</tr>
+      </table>
+    </div>
+  </div>
+  </body>
+  </html>
+  <script language="JavaScript" src="__PUBLIC__/js/tpl/outstorequery_index.js" type="text/javascript"></script>

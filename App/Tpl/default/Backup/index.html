@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- button -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/external/jquery.bgiframe-2.1.2.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.mouse.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.draggable.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.dialog.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.resizable.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+<!-- button -->
+</head>
+<body>
+<div class="container">
+  <h3>数据库备份恢复</h3>
+  <div class="mainbox">
+    <form action="__URL__/resume" method="post" enctype="multipart/form-data">
+      <input name="back" type="button" class="btn" value="备份" onclick="window.location.href='__URL__/backup'" />
+      <input type="button"  class="btn" id="repairBtn" value="数据库修复" onclick="toRepairDataBase()"/>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <!-- 此功能待完善
+	  <input type="button"  class="btn" id="clearStore" value="清理出入库数据" onclick="toClearStore()"/>
+	  -->
+      <table class="datalist fixwidth">
+        <tr>
+          <th>名称</th>
+          <!--<th>路径</th>-->
+          <th>备份时间</th>
+          <th>操作</th>
+        </tr>
+        <?php foreach($list as $key=>$row){ ?>
+        <tr>
+          <td align="center"><a href="<?php echo $row["back_path"]; ?>" target="_blank" title="右键另存"><?php echo $row["back_name"]; ?></a></td>
+          <!--<td align="center"><?php echo $row["back_path"]; ?></td>-->
+          <td align="center"><?php echo $row["back_datetime"]; ?></td>
+          <td align="center"><a href="#" id="resume" onclick="resume(<?php echo $row['back_id']; ?>)">恢复</a>&nbsp;&nbsp;<a href="#" onclick="del(<?php echo $row["back_id"]; ?>)">删除</a></td>
+        </tr>
+        <?php } ?>
+        <tr class="nobg">
+          <td colspan="7" align="center"><?php echo $page; ?></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<div id="dialog" title="清理出入库数据" style="display:none">
+  <div align="center">
+	<font color="red">说明（当出库选择产品型号太慢的时候，可以使用该功能）：</font>
+		<br>清理所选单据日期之间的出仓和入仓数据
+		<br>不选开始时间，清理所选时间之前的数据	
+		<br>清理历史数据可以加快系统速度
+		<br>清理之前会备份整个系统数据<br><br>
+  </div>
+  <table width="100%" border="0" align="left" class="p_table2">
+	<tr>
+	  <td height="35" align="right">制单日期：</td>
+	  <td align="left">从&nbsp;<input name="date_start" type="text" class="textfield01" id="date_start" size="10" />&nbsp;到&nbsp;<input name="date_end" type="text" class="textfield01" id="date_end" size="10" /></td>
+	   <td align="right"></td>
+	  <td align="left"></td> 
+	</tr>
+  </table>
+</div>
+
+<script language="JavaScript" src="__PUBLIC__/js/tpl/backup_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />

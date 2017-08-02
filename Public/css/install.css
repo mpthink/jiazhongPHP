@@ -1,0 +1,57 @@
+/* CSS Document */
+body {
+	background-color:#F2F9FD;
+	color:#666666;
+	font-size:14px;
+	font-family:tahoma;
+}
+table {
+	background-color:#FFF;
+	border:1px solid #DFDFDF;
+}
+.btn{
+    -moz-box-sizing: content-box;
+    background-color: #F5F5F5;
+    /*background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);*/
+    border: 1px solid #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    color: #464646;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 14px !important;
+    line-height: 16px;
+    padding: 6px 12px;
+	margin: 0px 0px 15px
+    text-decoration: none;
+}
+.title{
+	font-weight:bold;
+	font-size:14px;
+}
+td{
+	padding:13px
+}
+li{
+	line-height:30px;
+}
+input{
+	border: 1px solid #DFDFDF;
+    border-radius: 3px 3px 3px 3px;
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    padding: 2px;
+}
+.btn1 {    -moz-box-sizing: content-box;
+    background-color: #F5F5F5;
+    /*background-image: -moz-linear-gradient(center top , #FFFFFF, #F2F2F2);*/
+    border: 1px solid #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    color: #464646;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 14px !important;
+    line-height: 16px;
+    padding: 6px 12px;
+    text-decoration: none;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- dialog -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/external/jquery.bgiframe-2.1.2.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.mouse.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.draggable.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.dialog.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.resizable.js"></script>
+<!-- dialog -->
+
+<!-- button -->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+</head>
+<body>
+<div class="container">
+  <h3>仓库列表</h3>
+  选择列表
+  <select name="jump" id="jump">
+    <option value="0" <?php if($action=="cate")echo "selected='true'" ?>>产品类别</option>
+    <option value="1" <?php if($action=="index")echo "selected='true'" ?>>产品列表</option>
+    <option value="2" <?php if($action=="store")echo "selected='true'" ?>>仓库列表</option>
+    <option value="3" <?php if($action=="guest")echo "selected='true'" ?>>客户列表</option>
+      <option value="4" <?php if($action=="quality")echo "selected='true'" ?>>质量类别</option>
+      <option value="5" <?php if($action=="carry")echo "selected='true'" ?>>搬运组列表</option>
+	  <option value="6" <?php if($action=="deliver")echo "selected='true'" ?>>收货人列表</option>
+  </select>
+  <input type="button"  class="btn" id="button" value="添加仓库" onclick="toAddStore()"/>&nbsp;&nbsp;&nbsp;
+  <input type="button"  class="btn" id="button" value="添加库位" onclick="toAddStoreKuWei()"/>
+  
+  <input type="button"  class="btn" id="button" value="设置默认仓库" onclick="toSetDefaultStore()"/>
+  
+  <div class="mainbox">
+    <form action="admin.php?m=cache&a=update" method="post">
+      <table class="datalist fixwidth">
+        <tr>
+          <th>仓库名称</th>
+          <th>库位名称</th>
+		  <th>仓库地址</th>
+          <th>仓管员</th>
+          <th>联系电话</th>
+          <th>操作</th>
+        </tr>
+        <?php foreach($list as $key=>$row){ ?>
+        <tr>
+          <td align="center"><?php if($row['sto_default']==1){echo "(默认仓库) ".$row["sto_name"];}else{echo $row["sto_name"];} ?></td>
+          <td align="center"><?php if($row["sto_parrent_id"]==0){ echo "总库";}else{ echo $row["sto_kuwei_name"]; } ?></td>
+		  <td align="center"><?php echo $row["sto_address"]; ?></td>
+          <td align="center"><?php echo $row["sto_storer"]; ?></td>
+          <td align="center"><?php echo $row["sto_phone"]; ?></td>
+          <td align="center"><a href="#" onclick="<?php if($row['sto_parrent_id']>0){echo "toEditStoreKuWei(".$row["sto_id"].")"; }else{echo "toEditStore(".$row["sto_id"].")"; } ?>">编辑</a>&nbsp;&nbsp;<a href="#" onclick="del(<?php echo $row["sto_id"]; ?>)">删除</a></td>
+        </tr>
+        <?php } ?>
+        <tr class="nobg">
+          <td colspan="7" align="center"><?php echo $page; ?></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div id="dialogStorage" style="display:none">
+      <br><br>
+      <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+          <td width="35%" height="30" align="right">仓库名称： </td>
+          <td width="168" align="left"><input name="sto_name" type="text" id="sto_name" size="20"/></td>
+        </tr>
+		<tr>
+          <td height="30" align="right">仓库地址： </td>
+          <td align="left"><input name="sto_address" type="text" id="sto_address" size="20"/></td>
+        </tr>
+        <tr>
+          <td height="30" align="right">仓管员： </td>
+          <td align="left"><input name="sto_storer" type="text" id="sto_storer" size="20"/></td>
+        </tr>
+        <tr>
+          <td height="30" align="right">联系电话：</td>
+          <td align="left"><input name="sto_phone" type="text" id="sto_phone" size="20"/></td>
+        </tr>
+      </table>
+  </div>
+  
+  <div id="dialogAddStorageKuWei" style="display:none">
+      <br><br>
+      <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+          <td width="35%" height="30" align="right">仓库名称： </td>
+          <td width="168" align="left">
+		  <select name="sto_id_2" id="sto_id_2">
+			  <option value="0">--请选择--</option>
+			  <?php foreach($list_store as $row){ ?>
+				<option value="<?php echo $row['sto_id']; ?>"><?php echo $row['sto_name']; ?></option>
+			  <?php } ?>
+		  </select>
+		  </td>
+        </tr>
+        <tr>
+          <td height="30" align="right">库位名称： </td>
+          <td align="left"><input name="sto_kuwei_name_2" type="text" id="sto_kuwei_name_2" size="20"/></td>
+        </tr>
+      </table>
+  </div>
+  
+  <div id="dialogEditStorageKuWei" style="display:none">
+      <br><br>
+      <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+          <td width="35%" height="30" align="right">仓库名称： </td>
+          <td width="168" align="left">
+		 <input name="sto_name_3" type="text" id="sto_name_3" size="20"/>
+		  </td>
+        </tr>
+        <tr>
+          <td height="30" align="right">库位名称： </td>
+          <td align="left"><input name="sto_kuwei_name_3" type="text" id="sto_kuwei_name_3" size="20"/></td>
+        </tr>
+      </table>
+  </div>
+  
+  <div id="dialogDefautStore" style="display:none">
+      <br><br>
+      <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+          <td width="35%" height="30" align="right">仓库名称： </td>
+          <td width="168" align="left">
+		  <select name="sto_id_4" id="sto_id_4">
+		  <option value="0">--请选择--</option>
+          <?php foreach($list_store as $row){ ?>
+            <option value="<?php echo $row['sto_id']; ?>"><?php echo $row['sto_name']; ?></option>
+          <?php } ?>
+        </select>
+		  
+		  </td>
+        </tr>
+      </table>
+  </div>
+  
+  
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/basedata_store.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <css href="__PUBLIC__/css/admincp.css" />
+
+    <!-- dialog -->
+    <link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+    <script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+    <script src="__PUBLIC__/js/jquery/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.mouse.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.draggable.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.dialog.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.resizable.js"></script>
+    <!-- dialog -->
+
+    <!-- datepicker -->
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+    <!-- datepicker -->
+
+    <!-- autocomplete -->
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+            color:#2E6E9E;
+        }
+    </style>
+    <!-- autocomplete -->
+
+</head>
+<body>
+<div class="container">
+
+
+    <table>
+        <tr>
+            <td><h3>库存统计 &nbsp;&nbsp;&nbsp;&nbsp;</h3></td>
+            <td>
+                <input class="btn" type="button" value="查询"  onclick="toSearch()"/>&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+
+            <td>
+                <form action="__URL__/exportStore" method="post">
+                    <input name="in_sellerunit" type="hidden" id="in_sellerunit" value="<?php echo $in_sellerunit;?>" size="30" />
+                    <input name="in_prodname" type="hidden" id="in_prodname" value="<?php echo $in_prodname;?>" size="30" />
+                    <input name="in_store" type="hidden" id="in_store" value="<?php echo $in_store;?>" size="30" />
+                    <input name="in_date_start" type="hidden" id="in_date_start" value="<?php echo $in_date_start;?>" size="30" />
+                    <input name="in_date_end" type="hidden" id="in_date_end" value="<?php echo $in_date_end;?>" size="30" />
+                    <input name="in_status_time" type="hidden" id="in_status_time" value="<?php echo $in_status_time;?>" size="30" />
+                    <input name="in_quality" type="hidden" id="in_quality" value="<?php echo $in_quality;?>" size="30" />
+                    <input class="btn" type="submit" value="Excel导出" />
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="mainbox">
+        <form action="" method="post">
+            <table class="datalist fixwidth">
+                <tr>
+                    <th>品名规格</th>
+					<th>编码</th>
+                    <th>类别</th>
+                    <th>质量类别</th>
+					<th>生产日期</th>
+					<th>仓库/库位</th>
+                    <th>数量</th>
+                    <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
+                    <th>装卸成本单价</th>
+                    <th>装卸收入单价</th>
+                    <?php } ?>
+
+                    <th>客户单位</th>
+					<th>操作</th>
+                </tr>
+                <?php echo $temp1."<br>";?>
+                <?php echo $temp2."<br>";?>
+
+
+                <?php foreach($list as $key=>$row){ ?>
+                <tr>
+                    <td style="text-align:center">
+                        <?php echo $row["prod_name"]; ?>
+                    </td>
+					<td style="text-align:center">
+                        <?php echo $row["prod_code"]; ?>
+                    </td>
+                    <td style="text-align:center">
+                        <?php echo $row["pdca_name"]; ?>
+                    </td>
+                    <td style="text-align:center">
+                        <?php echo $row["iss_quality"]; ?>
+                    </td>
+					<td style="text-align:center">
+                        <?php
+							if($row["iss_make_date"]==""){
+						    $row["iss_make_date"] = "invalid";
+							echo "--";
+						}else{
+							echo substr($row["iss_make_date"],0,10);
+						}
+						?>
+                    </td>
+					<td style="text-align:center">
+                        <?php if($row["sto_kuwei_name"]==""){
+						    $row["sto_kuwei_name"] = "invalid";
+							echo $row["sto_name"];
+						}else{
+							echo $row["sto_name"]."/".$row["sto_kuwei_name"]; 
+						}
+						?>
+                    </td>
+                    <td style="text-align:center"><?php echo $row["allcount"]; ?></td>
+                    <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
+                    <td style="text-align:center"><?php echo $row["prod_price"]; ?></td>
+                    <td style="text-align:center"><?php echo $row["prod_realprice"]; ?></td>
+                    <?php } ?>
+
+                    <td style="text-align:center"><?php echo $row["ism_sellerunit"]; ?></td>
+					
+					<td style="text-align:center"><a href="#" onclick="toMoveStore(<?php echo "'".$row["iss_prod"]."','".$row["prod_name"]."','".$row["pdca_id"]."','".$row["pdca_name"]."','".$row["iss_quality"]."','".$row["prod_unit"]."','".$row["allcount"]."','".$row["iss_store"]."','".$row["sto_name"]."','".$row["sto_kuwei_name"]."','".$row["ism_sellerunit"]."','".$row["prod_code"]."','".$row["iss_make_date"]."'"; ?>)">移库</a></td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="5"></td>
+                    <td align="center">合计：</td>
+                    <td align="center"><?php echo $count; ?></td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr class="nobg">
+                    <td colspan="11" align="center"><?php echo $page; ?></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div id="dialog" title="库存查询" style="display:none">
+    <br><br>
+
+    <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+            <td height="35" align="right">客户单位： </td>
+            <td align="left"><input name="ism_sellerunit" type="text" id="ism_sellerunit" size="28" style='color:#CCC' value="请输入关键字或空格" onfocus="clearTip(this)" onblur='fillTip(this)'/></td>
+            <td align="right">制单日期：</td>
+            <td align="left">从&nbsp;<input name="ism_date_start" type="text" class="textfield01" id="ism_date_start" size="10" />&nbsp;到&nbsp;<input name="ism_date_end" type="text" class="textfield01" id="ism_date_end" size="10" /></td>
+        </tr>
+        <tr>
+            <td height="35" align="right">品名规格：</td>
+            <td align="left"><input name="iss_prodname" type="text" id="iss_prodname" size="28" value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>
+            <td align="right">仓库： </td>
+            <td align="left"><input name="iss_store" type="text" id="iss_store" size="28" /></td>
+        </tr>
+        <tr>
+            <td height="35" align="right">质量类别：</td>
+            <td align="left">
+                <select name="iss_quality" id="iss_quality">
+                    <option value=''>--请选择--</option>
+                </select>
+            </td>
+            <td align="right">勾单日期：</td>
+            <td align="left"><input name="ism_status_time" type="text" class="textfield01" id="ism_status_time" size="10" /></td>
+        </tr>
+    </table>
+</div>
+
+<!--移库-->
+<div id="movedialog" style="display:none">
+    <br>
+	<div align="center"> <font color='red'><b>移库会新建一个出库单，将原有货物全部移出，并创建新的入库单据到选择的仓库
+	</b></font></div>
+	<br>
+    <table width="100%" border="0" align="left" class="p_table2">
+		<tr>
+			<td width="35%" height="30" align="right">客户单位： </td>
+			<td width="168" align="left"><input name="move_sellerunit" type="text" id="move_sellerunit" size="40" disabled /></td>
+		</tr>
+		<tr>
+			<td width="35%" height="30" align="right">货物品名规格： </td>
+			<td width="168" align="left">
+				<input name="move_prod_name" type="text" id="move_prod_name" size="40" disabled />
+				<input name="move_prod_id" type="hidden" id="move_prod_name" size="40" disabled />
+			</td>
+		</tr>
+		<tr>
+            <td height="30" align="right">编码： </td>
+            <td align="left">
+				<input name="move_prod_code" type="text" id="move_prod_code" size="40" disabled/>
+			</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">类别： </td>
+            <td align="left">
+				<input name="move_pcda_name" type="text" id="move_pcda_name" size="40" disabled/>
+				<input name="move_pcda_id" type="hidden" id="move_pcda_id" size="40" disabled/>
+			</td>
+        </tr>
+        <tr>
+            <td height="30" align="right">质量类别： </td>
+            <td align="left"><input name="move_iss_quality" type="text" id="move_iss_quality" size="40" disabled /></td>
+        </tr>
+		<tr>
+            <td height="30" align="right">生产日期： </td>
+            <td align="left"><input name="move_iss_make_date" type="text" id="move_iss_make_date" size="40" disabled /></td>
+        </tr>
+		<tr>
+            <td height="30" align="right">数量： </td>
+            <td align="left"><input name="move_allcount" type="text" id="move_allcount" size="40" disabled /></td>
+        </tr>
+		<tr>
+            <td height="30" align="right">（原）仓库/库位： </td>
+            <td align="left"><input name="move_source_store" type="text" id="move_source_store" size="40" disabled /></td>
+        </tr>
+		<tr>
+            <td height="30" align="right">移库到： </td>
+            <td align="left">
+				<select name="move_store_big" id="move_store_big"></select>
+				<select name="move_store_small" id="move_store_small"></select>
+			</td>
+        </tr>
+    </table>
+  </div>
+  
+  
+<script language="JavaScript" src="__PUBLIC__/js/tpl/storecount_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120"/>

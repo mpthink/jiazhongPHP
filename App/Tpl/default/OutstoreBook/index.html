@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<js href="__PUBLIC__/js/jquery/jquery-1.7.1.js" />
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- autocomplete -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+<style>
+.ui-autocomplete-category {
+	font-weight: bold;
+	padding: .2em .4em;
+	margin: .8em 0 .2em;
+	line-height: 1.5;
+	color:#2E6E9E;
+}
+</style>
+<!-- autocomplete -->
+
+
+    <!-- datepicker -->
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+    <!-- datepicker -->
+
+<!-- button -->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+
+</head>
+<body>
+<div class="container">
+  <h3>出仓登记</h3>
+  <form action="__URL__/doAdd" method="post">
+
+      <table width="100%">
+          <tr>
+              <td width="10%" align="right">客户单位：</td>
+              <td width="30"><input name="osm_buyerunit" type="text" id="osm_buyerunit" size="45" value="请输入关键字或空格" onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>
+              <td width="10%" align="right">客户单据号：</td>
+              <td width="20%"><input name="osm_danju_no" type="text" id="osm_danju_no" size="30"/></td>
+              <td width="10%" align="right">客户单据日期：</td>
+              <td width="20%" align="left"><input name="osm_danju_date" type="text" id="osm_danju_date" size="20"/></td>
+          </tr>
+
+          <tr>
+              <td width="10%" align="right">流水编号：</td>
+              <td width="30%"><input name="osm_sn" type="text" id="ism_sn" size="30" value="<?php echo $osm_sn; ?>"/></td>
+              <td width="10%" align="right">搬运组：</td>
+              <td width="20%"><input name="osm_carry" type="text" id="osm_carry" size="30"/></td>
+              <td width="10%" align="right">车牌号：</td>
+              <td width="20%"><input name="osm_phone" type="text" id="osm_phone" size="20"/></td>
+          </tr>
+		  
+		  <tr>
+              <td width="10%" align="right">收货人：</td>
+              <td width="30%">
+				<select name='osm_deliver' id="osm_deliver">
+                      <option value=''>--请选择--</option>
+                      <?php foreach($list_deliver as $key=>$row_deliver){ ?>
+                      <option value="<?php echo $row_deliver['pddeliver_id']?>"><?php echo $row_deliver['pddeliver_name']?></option>
+                      <?php }?>
+                  </select>
+			  </td>
+			  <td width="10%" align="right">收货人地址：</td>
+              <td width="20%"><input name="osm_deliver_address" type="text" id="osm_deliver_address" size="30" disabled /></td>
+              <td width="10%" align="right">收货人电话：</td>
+              <td width="20%"><input name="osm_deliver_phone" type="text" id="osm_deliver_phone" size="20" disabled /></td>
+              
+          </tr>
+		  
+
+          <tr>
+              <td width="10%" align="right">单据备注：</td>
+              <td width="30%">
+                  <input name="osm_remark" type="text" id="osm_remark" size="45"/>
+
+              </td>
+              <td width="10%" align="right"> 是否冲单：</td>
+              <td width="20%">
+                  <select name="osm_danju_del" id="osm_danju_del">
+                      <option value="0" selected="true">否</option>
+                      <option value="1">是</option>
+                  </select>
+
+              </td>
+              <td width="10%" align="right">收货单位：</td>
+              <td width="20%"><input name="osm_deliver_note" type="text" id="osm_deliver_note" size="20" disabled /></td>
+          </tr>
+		  
+		  <tr>
+			<td width="10%" align="right"></td>
+              <td width="30%">
+              </td>
+              <td width="10%" align="right"></td>
+              <td width="20%">
+              </td>
+              <td width="10%"></td>
+              <td width="20%"><input class="btn" type="button" value="添加项" id="btnAdd"/></td>
+		  </tr>
+		  
+
+      </table>
+    <div class="mainbox">
+    <table width="100%" class="datalist fixwidth" id="table">
+      <tr>
+        <th>序号</th>
+          <th>品名规格</th>
+		  <th>编码</th>
+          <th>类别</th>
+
+          <th>质量类别</th>
+          <th>单位</th>
+
+          <th>保质期(天)</th>
+		  <th>生产日期</th>
+          <th>应发数量</th>
+          <th>实发数量</th>
+
+          <!-- <th>总价</th>-->
+          <th>仓库</th>
+        <!-- <th>备注</th> -->
+        <th>操作</th>
+      </tr>
+    </table>
+    </div>
+    制单：<input name="osm_writer" type="text" id="osm_writer" size="20" value="<?php echo $_SESSION['user']['user_realname']; ?>"/>&nbsp;&nbsp;
+    <input class="btn" type="submit" value="保存" />&nbsp;&nbsp;<input class="btn" type="button" value="返回" onclick="window.history.back()"/>
+    <input name="iss_mainid" type="hidden" id="iss_mainid"/>
+  </form>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/outstorebook_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />

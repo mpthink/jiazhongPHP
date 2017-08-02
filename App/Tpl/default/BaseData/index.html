@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- dialog -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/external/jquery.bgiframe-2.1.2.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.mouse.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.draggable.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.dialog.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.resizable.js"></script>
+<!-- dialog -->
+    <!-- autocomplete -->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+            color: #2E6E9E;
+        }
+    </style>
+<!-- button -->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+</head>
+<body>
+<div class="container">
+  <h3>产品列表</h3>
+  选择列表
+  <select name="jump" id="jump" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>>
+    <option value="0" <?php if($action=="cate")echo "selected='true'" ?>>产品类别</option>
+    <option value="1" <?php if($action=="index")echo "selected='true'" ?>>产品列表</option>
+    <option value="2" <?php if($action=="store")echo "selected='true'" ?>>仓库列表</option>
+    <option value="3" <?php if($action=="guest")echo "selected='true'" ?>>客户列表</option>
+      <option value="4" <?php if($action=="quality")echo "selected='true'" ?>>质量类别</option>
+    <option value="5" <?php if($action=="carry")echo "selected='true'" ?>>搬运组列表</option>
+	<option value="6" <?php if($action=="deliver")echo "selected='true'" ?>>收货人列表</option>
+  </select>
+
+  <input type="button"  class="btn" id="button" value="添加产品" onclick="toAddProduct()"  <?php if($_SESSION['user']['user_type']==4) echo "disabled"?> />
+    &nbsp;&nbsp;&nbsp;
+        <select name="searchBy" id="searchBy">
+            <option value="prod_name" <?php if($searchBy=='prod_name'){echo "selected='true'";}; ?>>货物品名规格</option>
+            <option value="prod_code" <?php if($searchBy=='prod_code'){echo "selected='true'";}; ?>>货物编码</option>
+            <option value="prod_guest" <?php if($searchBy=='prod_guest'){echo "selected='true'";}; ?>>客户单位</option>
+
+        </select>
+        <input type="text" name="keyword" id="keyword" value="<?php echo $keyword; ?>" size="30"/>&nbsp;&nbsp;
+        <input type="button" id="fastSearch" value="快查" class="btn"/>&nbsp;&nbsp;
+
+
+  <div class="mainbox">
+  
+    <form action="" method="post">
+      <table class="datalist fixwidth">
+        <tr>
+          <th>货物品名规格</th>
+          <th>产品类别</th>
+            <th>货物编码</th>
+            <th>单位</th>
+            <th>客户单位</th>
+			<th>保质期(天)</th>
+			<th>单位重量(KG)</th>
+          <th>装卸成本单价</th>
+            <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4||$_SESSION['user']['user_type']==5){ ?>
+            <th>装卸收入单价</th>
+            <?php } ?>
+            <th>单位立方量</th>
+          <th>操作</th>
+        </tr>
+        <?php foreach($list as $key=>$row){ ?>
+        <tr>
+          <td align="center"><?php echo $row["prod_name"]; ?></td>
+          <td align="center"><a href="#" onclick="window.location.href='__URL__/index/prod_cate/<?php echo $row[prod_cate]; ?>'"><?php echo $row["pdca_name"]; ?></a></td>
+            <td align="center"><?php echo $row["prod_code"]; ?></td>
+            <td align="center"><?php echo $row["prod_unit"]; ?></td>
+            <td align="center"><?php echo $row["prod_guest"]; ?></td>
+			<td align="center"><?php echo $row["prod_life"]; ?></td>
+			<td align="center"><?php echo $row["prod_weight"]; ?></td>
+            <td align="center"><?php echo $row["prod_price"]; ?></td>
+            <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
+            <td align="center"><?php echo $row["prod_realprice"]; ?></td>
+            <?php } ?>
+            <td align="center"><?php echo $row["prod_volume"]; ?></td>
+          <td align="center"><a href="#" onclick="toEditProduct(<?php echo $row["prod_id"]; ?>)">编辑</a>&nbsp;&nbsp;
+              <?php if($_SESSION['user']['user_type']!=4){ ?>
+                <a href="#" onclick="del(<?php echo $row["prod_id"]; ?>)">删除</a>
+              <?php }?>
+          </td>
+        </tr>
+        <?php } ?>
+        <tr class="nobg">
+          <td colspan="11" align="center"><?php echo $page; ?></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div id="dialog" style="display:none">
+    <br><br>
+    <table width="100%" border="0" align="left" class="p_table2">
+        <tr>
+            <td width="35%" height="30" align="right">客户单位： </td>
+            <td width="168" align="left"><input name="prod_guest" type="text" id="prod_guest" size="40" value="<?php echo $one['prod_guest']; ?>" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>/>（输入空格选择单位）</td>
+        </tr>
+      <tr>
+        <td width="35%" height="30" align="right">货物品名规格： </td>
+        <td width="168" align="left"><input name="prod_name" type="text" id="prod_name" size="40" value="<?php echo $one['prod_name']; ?>" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>/></td>
+      </tr>
+        <tr>
+            <td height="30" align="right">货物编码： </td>
+            <td align="left"><input name="prod_code" type="text" id="prod_code" size="40" value="<?php echo $one['prod_code']; ?>" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>/></td>
+        </tr>
+        <tr>
+            <td height="30" align="right">单位： </td>
+            <td align="left"><input name="prod_price" type="text" id="prod_unit" size="40" value="<?php echo $one['prod_unit']; ?>" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>/></td>
+        </tr>
+
+        <tr>
+        <td height="30" align="right">类别： </td>
+        <td align="left">
+        <select name="prod_cate" id="prod_cate" <?php if($_SESSION['user']['user_type']==4) echo "disabled"?>>
+          <option value="0">--请选择--</option>
+          <?php foreach($list_cate as $row){ ?>
+            <option value="<?php echo $row['pdca_id']; ?>" <?php if($row['pdca_id']==$one['prod_cate']){echo "selected=true";}; ?>><?php echo $row['pdca_name']; ?></option>
+          <?php } ?>
+        </select>
+        </td>
+      </tr>
+	  <tr>
+        <td height="30" align="right">保质期(天)： </td>
+        <td align="left"><input name="prod_life" type="text" id="prod_life" size="40" value="<?php echo $one['prod_life']; ?>"/></td>
+      </tr>
+	  <tr>
+        <td height="30" align="right">单位重量(KG)： </td>
+        <td align="left"><input name="prod_weight" type="text" id="prod_weight" size="40" value="<?php echo $one['prod_weight']; ?>"/>(仅输入数字，如：2.15)</td>
+      </tr>
+        <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4||$_SESSION['user']['user_type']==5){ ?>
+        <tr>
+        <td height="30" align="right">装卸成本单价： </td>
+        <td align="left"><input name="prod_price" type="text" id="prod_price" size="40" value="<?php echo $one['prod_price']; ?>"/></td>
+        </tr>
+        <tr>
+            <td height="30" align="right">装卸收入单价： </td>
+            <td align="left"><input name="prod_realprice" type="text" id="prod_realprice" size="40" value="<?php echo $one['prod_realprice']; ?>"/></td>
+        </tr>
+        <?php } ?>
+        <tr>
+            <td height="30" align="right">单位立方量： </td>
+            <td align="left"><input name="prod_volume" type="text" id="prod_volume" size="40" value="<?php echo $one['prod_volume']; ?>"/></td>
+        </tr>
+		
+    </table>
+  </div>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/basedata_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />

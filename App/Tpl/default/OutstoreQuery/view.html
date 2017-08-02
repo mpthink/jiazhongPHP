@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+    <style media=print>
+        /* 应用这个样式的在打印时隐藏 */
+        .noPrint {
+            display: none;
+        }
+
+        /* 应用这个样式的，从那个标签结束开始另算一页，之后在遇到再起一页，以此类推 */
+        .page {
+            page-break-after: always;
+        }
+    </style>
+    <script id=clientEventHandlersJS language=javascript>
+        <!--
+        function btnPrint_onclick()
+        {
+            parent.main.focus();
+            parent.main.print();
+        }
+        //-->
+    </script>
+
+<!-- button -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+
+</head>
+<body>
+
+
+
+<div class="container">
+    <div align="left"><font size="3" color="black">四川雄鹰展翅物流有限责任公司(海口分公司)</font></div>
+    <div align="center"><font size="5" color="black"><b>出库单据</b></font></div>
+  <form action="__URL__/doApprove" method="post">
+
+      <table width="100%">
+          <tr>
+              <td width="10%" style="line-height:150%" align="right">客户单位：</td>
+              <td width="30%"><?php echo $main['osm_buyerunit'] ?></td>
+              <td width="10%" align="right">单据号：</td>
+              <td width="25%"><?php echo $main['osm_danju_no'] ?></td>
+              <td width="10%" align="right">单据日期：</td>
+              <td width="15%"><?php echo substr($main['osm_danju_date'],0,10) ?></td>
+          </tr>
+
+          <tr>
+			  <td width="10%" style="line-height:150%" align="right">流水编号：</td>
+              <td width="30%"><?php echo $main['osm_sn'] ?></td>
+			  <td width="10%" style="line-height:150%" align="right">制单日期：</td>
+              <td width="25%"><?php echo substr($main['osm_date'],0,10) ?></td>
+              <td width="10%" align="right">车牌号：</td>
+              <td width="15%"><?php echo $main['osm_phone'] ?></td>
+          </tr>
+		  <!--添加送货人信息-->
+		  <tr>
+			  <td width="10%" style="line-height:150%" align="right">收货人：</td>
+              <td width="30%"><?php echo substr($deliver['pddeliver_name'],0,10) ?></td>
+              <td width="10%" style="line-height:150%" align="right">收货地址：</td>
+              <td width="25%"><?php echo $deliver['pddeliver_address'] ?></td>
+              <td width="10%" align="right">收货电话：</td>
+              <td width="15%"><?php echo $deliver['pddeliver_phone'] ?></td>
+          </tr>
+		  
+		  
+          <tr class="noPrint">
+              <td width="10%" style="line-height:150%" align="right">单据状态：</td>
+              <td width="30%">
+                  <?php
+                  if($main["osm_status"]==2){echo "<font color='#0000FF'><b>已复核</b></font>";};
+                    if($main["osm_status"]==1){echo "<font color='green'><b>已勾单</b></font>";};
+                       if($main["osm_status"]==0){echo "<font color='red'><b>未勾单</b></font>";};
+                  ?>
+              </td>
+              <td width="10%" align="right">勾单人：</td>
+              <td width="25%"><?php echo $main['osm_operator'] ?></td>
+              <td width="10%" align="right">勾单日期：</td>
+              <td width="15%"><?php echo substr($main['osm_status_time'],0,10) ?></td>
+          </tr>
+          <tr class="noPrint">
+              <td width="10%" align="right">搬运组：</td>
+              <td width="30%">
+                  <?php  if($main['osm_carry']!=''||$main['osm_status']>0) { echo $main['osm_carry'];}else{ ?>
+                  <select name='osm_carry' id="osm_carry">
+                      <option value=''>--请选择--</option>
+                      <?php foreach($list_carry as $key=>$row_carry){ ?>
+                      <option value="<?php echo $row_carry['pdcarry_name']?>"><?php echo $row_carry['pdcarry_name']?></option>
+                      <?php }?>
+                  </select>
+                  <?php }?>
+
+              </td>
+              <td width="10%" align="right">复核人：</td>
+              <td width="25%"><?php echo $main['osm_reviwer'] ?></td>
+              <td width="10%" align="right">复核日期：</td>
+              <td width="15%"><?php echo substr($main['osm_reviwer_time'],0,10) ?></td>
+          </tr>
+          <tr>
+              <td width="15%" style="line-height:150%" align="right">单据备注：</td>
+              <td width="60%" colspan="3"><?php echo $main['osm_remark'] ?></td>
+			  <td width="10%" align="right">收货单位：</td>
+              <td width="15%"><?php echo $deliver['pddeliver_note'] ?></td>
+          </tr>
+      </table>
+
+
+     <div class="mainbox">
+    <table width="100%" class="datalist fixwidth" id="table">
+      <tr>
+        <th>品名规格</th>
+		<th>编码</th>
+        <th>类别</th>
+
+          <th>质量类别</th>
+          <th>单位</th>
+
+         <th>保质期(天)</th>
+		 <th>生产日期</th>
+          <th>应发数量</th>
+          <th>实发数量</th>
+
+        <th>重量(吨)</th>
+        <th>仓库/库位</th>
+        <!-- <th>备注</th> -->
+        <!--<th>操作</th>-->
+      </tr>
+      <?php foreach($list_sub as $row_sub){ ?>
+      <tr>
+        <td align='center'><?php echo $row_sub["prod_name"]; ?></td>
+		<td align='center'><?php echo $row_sub["prod_code"]; ?></td>
+        <td align='center'><?php echo $row_sub["pdca_name"]; ?></td>
+
+          <td align='center'><?php echo $row_sub['oss_quality']; ?></td>
+          <td align='center'><?php echo $row_sub['prod_unit']; ?></td>
+		  <td align='center'><?php echo $row_sub['prod_life']; ?></td>
+		  <td align='center'><?php echo substr($row_sub['oss_make_date'],0,10); ?></td>
+		  
+          <?php if(($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==3||$_SESSION['user']['user_type']==5)&&$main["osm_status"]==0){ ?>
+          <td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_plancount']; ?>" /></td>
+          <td align='center'><input name='oss_count[]' type='text' id='oss_count_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_count']; ?>" /></td>
+
+          <input name='oss_id[]' index='<?php echo $key; ?>' type='hidden' id='oss_id_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_id']; ?>" />
+          <?php } else{ ?>
+          <td align='center'><?php echo $row_sub["oss_plancount"]; ?></td>
+          <td align='center'><?php echo $row_sub["oss_count"]; ?></td>
+
+          <?php } ?>
+		  
+		  <td align='center'><?php echo $row_sub["oss_count"]*$row_sub['prod_weight']/1000; ?></td>
+
+        <td align='center'><?php if($row_sub["sto_kuwei_name"]==""){echo $row_sub["sto_name"];}else{echo $row_sub["sto_name"]."/".$row_sub["sto_kuwei_name"];} ?></td>
+	  </tr>
+      <?php } ?>
+      <tr class="nobg">
+          <td colspan="6"></td>
+          <td align='center'>合计：</td>
+          <td align='center'><?php echo $count_plan; ?></td>
+          <td align='center'><?php echo $count_real; ?></td>
+		  <td align='center'><?php echo $weight_sum; ?></td>
+          <td class="tdpage" colspan="1"></td>
+      </tr>
+    </table>
+    </div>
+	
+	<?php if($main["osm_status"]==0){ ?>
+
+	<div align="center" class="noPrint"> <font color='red'><b>勾单前必须先选择搬运组</b></font></div>
+	<?php } ?>
+	
+	<table width="100%">
+		<tr>
+			<td width="40%">制单人：&nbsp;&nbsp;<?php echo $main['osm_writer'] ?>&nbsp;&nbsp;</td>
+			<td width="30%">司机签收：&nbsp;&nbsp;</td>
+			<td width="30%">客户签收：&nbsp;&nbsp;</td>
+		</tr>
+	</table>
+      <input name='osm_id' type='hidden' value='<?php echo $main["osm_id"]; ?>'>
+    <!--<input type="submit" value="保存" />-->&nbsp;&nbsp;
+      <div class="noPrint" align="center">
+          <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==5){ ?>
+          <input class="btn" type="button" value="编辑"  onclick="editOUT(<?php echo $main["osm_id"]; ?>)" <?php if($main["osm_status"]!=-1)echo "disabled='true'" ?> />
+          <input class="btn" type="button" value="提交"  onclick="sumbitOUT(<?php echo $main["osm_id"]; ?>)" <?php if($main["osm_status"]!=-1)echo "disabled='true'" ?> />
+          <?php } ?>
+          <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==5){ ?>
+          <input class="btn" type="button" value="复核"  onclick="review(<?php echo $main["osm_id"]; ?>)" <?php if($main["osm_status"]!=1)echo "disabled='true'" ?> />
+          <?php } ?>
+
+          <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==3||$_SESSION['user']['user_type']==5){ ?>
+          <input class="btn" type="submit" value="勾单" <?php if($main["osm_status"]!=0)echo "disabled='true'" ?> />
+          <input class="btn" type="button" value="退单" onclick="rollbackOUT(<?php echo $main["osm_id"]; ?>)" <?php if($main["osm_status"]!=0)echo "disabled='true'" ?> />
+          <?php } ?>
+          <input class="btn" type="button" value="返回"  onclick="window.history.back()"/>
+          <INPUT id="btnPrint" class="btn" type="button" value="打印" name="Print" onclick="return btnPrint_onclick()">
+      </div>
+  </form>
+</div>
+</body>
+</html>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/outstorequery_view.js" type="text/javascript"></script>
