@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<css href="__PUBLIC__/css/admincp.css" />
+
+<!-- autocomplete -->
+<link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+<script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+<style>
+.ui-autocomplete-category {
+	font-weight: bold;
+	padding: .2em .4em;
+	margin: .8em 0 .2em;
+	line-height: 1.5;
+	color:#2E6E9E;
+}
+</style>
+<!-- autocomplete -->
+
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+    <!-- datepicker -->
+
+<!-- button -->
+<script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+<!-- button -->
+
+</head>
+<body>
+<div class="container">
+  <h3>入仓编辑</h3>
+  <form action="__URL__/doEdit" method="post">
+      <table width="100%">
+          <tr>
+              <td width="10%" align="right">客户单位：</td>
+              <td width="30"><input name="ism_sellerunit" type="text" id="ism_sellerunit" value="<?php echo $main['ism_sellerunit'] ?>" size="45" /></td>
+              <td width="10%" align="right">客户单据号：</td>
+              <td width="20%"><input name="ism_danju_no" type="text" id="ism_danju_no" value="<?php echo $main['ism_danju_no'] ?>" size="20" /></td>
+              <td width="10%" align="right">客户单据日期：</td>
+              <td width="20%" align="left"><input name="ism_danju_date" type="text" id="ism_danju_date" value="<?php echo substr($main['ism_danju_date'],0,10) ?>" size="20" /></td>
+          </tr>
+
+          <tr>
+              <td width="10%" align="right">流水编号：</td>
+              <td width="30%"><input name="ism_sn" type="text" id="ism_sn" size="30" value="<?php echo $main['ism_sn'] ?>" /></td>
+              <td width="10%" align="right">搬运组：</td>
+              <td width="20%"><input name="ism_carry" type="text" id="ism_carry" value="<?php echo $main['ism_carry'] ?>" size="20" disabled /></td>
+              <td width="10%" align="right">车牌号：</td>
+              <td width="20%"><input name="ism_phone" type="text" id="ism_phone" value="<?php echo $main['ism_phone'] ?>" size="20" /></td>
+
+          </tr>
+
+          <tr>
+              <td width="10%" align="right">单据备注：</td>
+              <td width="70%" colspan="4">
+                  <input name="ism_remark" type="text" id="ism_remark" value="<?php echo $main['ism_remark'] ?>" size="45" />
+
+              </td>
+              <td width="20%">
+                  <input class="btn" type="button" value="添加项" id="btnAdd"/>
+              </td>
+          </tr>
+
+      </table>
+      <div class="mainbox">
+    <table width="100%" class="datalist fixwidth" id="table">
+      <tr>
+        <th width="30" style="text-align:center">序号</th>
+
+          <th>品名规格</th>
+		  <th>编码</th>
+          <th>类别</th>
+          <th>质量类别</th>
+          <th>单位</th>
+
+        <th>保质期(天)</th>
+		<th>生产日期</th>
+          <th>应收数量</th>
+          <th>实收数量</th>
+
+        <!-- <th>总价</th> -->
+        <th>仓库</th>
+        <!-- <th>备注</th> -->
+        <th>操作</th>
+      </tr>
+      <?php foreach($list_sub as $key=>$row_sub){ ?>
+      <tr id='row_<?php echo $key; ?>'>
+        <td align='center'><?php echo $key+1; ?></td>
+        <td align='center'>
+        <input name='iss_prodname[]' index='<?php echo $key; ?>' type='text' id='iss_prodname_<?php echo $key; ?>' size='30' value="<?php echo $row_sub['iss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
+        </td>
+		
+		<td align='center'><input name='iss_code[]' type='text' id='iss_code_<?php echo $key; ?>' size='25' value="<?php echo $row_sub['prod_code']; ?>" disabled /></td>
+		
+        <td align='center'><input name='iss_cate_name[]' type='text' id='iss_cate_name_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['pdca_name']; ?>" disabled="disabled"/></td>
+
+          <td align='center'>
+              <select name='iss_quality[]' id='iss_quality'>
+                  <?php foreach($list_quality as $row_quality){ ?>
+                  <option value='<?php echo $row_quality['pdqu_name']; ?>' <?php if($row_quality['pdqu_name']==$row_sub['iss_quality'])echo "selected='true'" ?>><?php echo $row_quality['pdqu_name']; ?></option>
+                  <?php } ?>
+
+              </select>
+
+
+          </td>
+          <td align='center'><input name='iss_unit[]' type='text' id='iss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>" disabled /></td>
+		  
+		  <td align='center'><input name='iss_life[]' type='text' id='iss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
+		  
+		  <td align='center'><input name='iss_make_date[]' type='text' id='iss_make_date_<?php echo $key; ?>' size='12' value="<?php echo substr($row_sub['iss_make_date'],0,10); ?>" /></td>
+
+          <!-- <td align='center'><input name='iss_price[]' type='text' id='iss_price_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_price']; ?>"/></td> -->
+          <td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_plancount']; ?>" /></td>
+          <td align='center'><input name='iss_count[]' type='text' id='iss_count_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_count']; ?>" onblur='compute(<?php echo $key; ?>)'/></td>
+
+        <input name='iss_total[]' type='hidden' id='iss_total_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_total']; ?>"/>
+        <td align='center'>
+          <select name='iss_store[]' id='iss_store'>
+          <option value=''>--请选择--</option>
+          <?php foreach($list_store as $row_store){ ?>
+            <option value='<?php echo $row_store['sto_id']; ?>' <?php if($row_store['sto_id']==$row_sub['iss_store'])echo "selected='true'" ?>><?php echo $row_store['sto_name']; ?></option>
+          <?php } ?>
+          </select>
+        </td>
+        <!-- <td align='center'><input name='iss_remark[]' type='text' id='iss_remark' size='25' value="<?php echo $row_sub['iss_remark']; ?>"/></td> -->
+        <td align='center'>
+        <a href='#' name='linkDelete' onclick='deleteRow(<?php echo $key; ?>)'>删除</a>
+        <input name='iss_prod[]' id="iss_prod_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["iss_prod"]; ?>'>
+        <input name='iss_cate[]' id="iss_cate_<?php echo $key; ?>" type='hidden' value='<?php echo $row_sub["iss_cate"]; ?>'>
+        </td>
+	  </tr>
+      <?php } ?>
+    </table>
+    </div>
+    制单：<input name="ism_writer" type="text" id="ism_writer" value="<?php echo $main['ism_writer'] ?>" size="20" />&nbsp;&nbsp;
+    <input class="btn" type="submit" value="保存" />&nbsp;&nbsp;<input class="btn" type="button" value="返回"  onclick="window.history.back()"/>
+    <input name='ism_id' type='hidden' value='<?php echo $main["ism_id"]; ?>'>
+  </form>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/instorequery_toEdit.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120" />

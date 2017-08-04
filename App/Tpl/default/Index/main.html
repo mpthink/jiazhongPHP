@@ -52,32 +52,6 @@ td{
 <body>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="50%" align="left" valign="top"><table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td colspan="2" class="title_main">前七天出入仓数量曲线图</td>
-      </tr>
-      <tr class="text_line">
-        <td colspan="2" align="left" id="container1">&nbsp;</td>
-      </tr>
-    </table>
-    
-      <table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td colspan="2" class="title_main">出入仓比例图</td>
-        </tr>
-        <tr class="text_line">
-          <td colspan="2" align="left" id="container4">&nbsp;</td>
-        </tr>
-      </table>
-      <table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0" style="display:none;">
-        <tr>
-          <td colspan="2" class="title_main">前七天出入仓金额曲线图</td>
-        </tr>
-        <tr class="text_line">
-          <td width="50%" align="left" id="container2">&nbsp;</td>
-          <td align="left" id="container3">&nbsp;</td>
-        </tr>
-    </table></td>
     <td align="left" valign="top"><table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td class="title_main">通知</td>
@@ -87,47 +61,6 @@ td{
           <td align="left" valign="top"><?php echo $key+1; ?>、&nbsp;&nbsp;<a href="#" onclick="noticeView(<?php echo $row['ntc_id']; ?>)"><?php echo msubstr($row["ntc_title"],0,50); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;(<?php echo msubstr($row["ntc_author"],0,35); ?>@<?php echo msubstr($row["ntc_datetime"],0,10); ?>)</td>
         </tr>
         <?php } ?>
-      </table>
-      <table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td colspan="6" class="title_main">出入仓统计</td>
-        </tr>
-        <tr class="text_line">
-          <td align="right">入仓(库存)总量：</td>
-          <td align="left"><?php echo $instore_count["count"]; ?></td>
-          <td align="right">本月入仓总量：</td>
-          <td align="left"><?php echo $instore_month["count"]; ?></td>
-          <td align="right">今日入仓量：</td>
-          <td align="left"><?php echo $instore_toady_count["count"]; ?></td>
-        </tr>
-        <!--
-        <tr class="text_line">
-          <td align="right">入仓(库存)总金额：</td>
-          <td align="left"><?php echo $instore_count["total"]; ?></td>
-          <td align="right">本月入仓金额：</td>
-          <td align="left"><?php echo $instore_month["total"]; ?></td>
-          <td align="right">今日入仓金额：</td>
-          <td align="left"><?php echo $instore_toady_count["total"]; ?></td>
-        </tr>
-        -->
-        <tr class="text_line">
-          <td align="right">出仓总量：</td>
-          <td align="left"><?php echo $outstore_count["count"]; ?></td>
-          <td align="right">本月出仓量：</td>
-          <td align="left"><?php echo $outstore_month["count"]; ?></td>
-          <td align="right">今日出仓量：</td>
-          <td align="left"><?php echo $outstore_today_count["count"]; ?></td>
-        </tr>
-        <!--
-        <tr class="text_line">
-          <td align="right">出仓总金额：</td>
-          <td align="left"><?php echo $outstore_count["total"]; ?></td>
-          <td align="right">本月出仓金额：</td>
-          <td align="left"><?php echo $outstore_month["total"]; ?></td>
-          <td align="right">今日出仓金额：</td>
-          <td align="left"><?php echo $outstore_today_count["total"]; ?></td>
-        </tr>
-        -->
       </table>
       <table class="frame" width="95%" border="0" cellspacing="0" cellpadding="0">
         <tr>
@@ -157,15 +90,4 @@ td{
 </div>
 </body>
 </html>
-<script>
-var line_cate=<?php echo $line_cate; ?>;
-var line_count_in=<?php echo $line_count_in; ?>;
-var line_count_out=<?php echo $line_count_out; ?>;
-var line_total_in=<?php echo $line_total_in; ?>;
-var line_total_out=<?php echo $line_total_out; ?>;
-var pie_out_total=<?php echo $outstore_count['total']; ?>;
-var pie_in_total=<?php echo $instore_count['total']; ?>;
-var pie_out_count=<?php echo $outstore_count['count']; ?>;
-var pie_in_count=<?php echo $instore_count['count']; ?>;
-</script>
 <script language="JavaScript" src="__PUBLIC__/js/tpl/index_main.js" type="text/javascript"></script>

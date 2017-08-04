@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <js href="__PUBLIC__/js/jquery/jquery-1.7.1.js"/>
+    <css href="__PUBLIC__/css/admincp.css"/>
+
+
+    <!-- autocomplete -->
+    <link rel="stylesheet" href="__PUBLIC__/js/jquery/themes/redmond/jquery.ui.all.css">
+    <script src="__PUBLIC__/js/jquery/jquery-1.7.1.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.core.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.position.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.autocomplete.js"></script>
+
+    <style>
+        .ui-autocomplete-category {
+            font-weight: bold;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+            color: #2E6E9E;
+        }
+    </style>
+    <js href="__PUBLIC__/js/jquery/jquery.autocomplete.js"/>
+    <css href="__PUBLIC__/css/redmond/jquery.autocomplete.css"/>
+
+
+    <!-- datepicker -->
+    <!--<script src="__PUBLIC__/js/jquery/ui/jquery.ui.widget.js"></script>-->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.datepicker.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
+    <script src="__PUBLIC__/js/jquery/ui/jquery.effects.core.js"></script>
+    <!-- datepicker -->
+
+
+    <!-- button -->
+    <script src="__PUBLIC__/js/jquery/ui/jquery.ui.button.js"></script>
+    <!-- button -->
+
+
+</head>
+<body>
+
+<div class="container">
+	<br>
+	<p align="center"><font size="5">货物托运单登记</font></p>
+	<br>
+    <div class="mainbox">
+        <form action="__URL__/doAdd" method="post">
+            <table width="100%" style="border-collapse:separate; border-spacing:0px 10px;">
+                <tr>
+					<td width="10%" align="right">客户：</td>
+					<td width="30"><input name="ship_customer" type="text" id="ship_customer" size="45" style='color:#CCC' value="请输入关键字或空格" onfocus="clearTip(this)" onblur='fillTip(this)'/></td>
+					<td width="10%" align="right">最终目的地：</td>
+					<td width="20%"><input name="ship_final_address" type="text" id="ship_final_address" size="30"/></td>
+					<td width="10%" align="right">填表日期：</td>
+					<td width="20%" align="left"><input name="ship_input_date" type="text" id="ship_input_date" size="20"/></td>
+                </tr>
+
+				<tr>
+					<td width="10%" align="right">车号：</td>
+					<td width="30%"><input name="ship_car_no" type="text" id="ship_car_no" size="30" value=""/></td>
+					<td width="10%" align="right">柜号1：</td>
+					<td width="20%"><input name="ship_box_no1" type="text" id="ship_box_no1" size="30" /></td>
+					<td width="10%" align="right">柜号2：</td>
+					<td width="20%"><input name="ship_box_no2" type="text" id="ship_box_no2" size="20"/></td>
+
+                </tr>
+				
+				<tr>
+					<td width="10%" align="right">收货地址：</td>
+					<td width="30%"><input name="ship_address" type="text" id="ship_address" size="30" value=""/></td>
+					<td width="10%" align="right">联系电话：</td>
+					<td width="20%"><input name="ism_carry" type="text" id="ism_carry" size="30" /></td>
+					<td width="10%" align="right">送货日期：</td>
+					<td width="20%" align="left"><input name="ship_deliver_date" type="text" id="ship_deliver_date" size="20"/></td>
+                </tr>
+				
+				<tr>
+					<td width="10%" align="right">送货司机：</td>
+					<td width="30%"><input name="ship_driver_to" type="text" id="ship_driver_to" size="30" value=""/></td>
+					<td width="10%" align="right">送货车牌：</td>
+					<td width="20%"><input name="ship_driver_car_no" type="text" id="ship_driver_car_no" size="30" /></td>
+					<td width="10%" align="right">提成：</td>
+					<td width="20%" align="left"><input name="ship_deliver_money" type="text" id="ship_deliver_money" size="20"/></td>
+                </tr>
+				
+				<tr>
+					<td width="10%" align="right">回柜司机：</td>
+					<td width="30%"><input name="ship_driver_back" type="text" id="ship_driver_back" size="30" value=""/></td>
+					<td width="10%" align="right">回柜车牌：</td>
+					<td width="20%"><input name="ship_driver_car_no" type="text" id="ship_driver_car_no" size="30" /></td>
+					<td width="10%" align="right">回柜日期</td>
+					<td width="20%" align="left"><input name="ship_deliver_money" type="text" id="ship_deliver_money" size="20"/></td>
+                </tr>
+
+                <tr>
+					<td width="10%" align="right">单据备注：</td>
+					<td width="30%" colspan="5">
+						<input name="ship_remark" type="text" id="ship_remark" size="45"/>
+					</td>
+                </tr>
+            </table>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;制单人：<input name="ism_writer" type="text" id="ism_writer" size="20"
+                       value="<?php echo $_SESSION['user']['user_realname']; ?>"/>&nbsp;&nbsp;<input class="btn" type="submit" value="保存"/>&nbsp;&nbsp;<input class="btn" type="button" value="返回" onclick="window.history.back()"/>
+        </form>
+    </div>
+</div>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/instorebook_index.js" type="text/javascript"></script>
+<layout name="Public:footer" cache="120"/>

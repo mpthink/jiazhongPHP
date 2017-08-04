@@ -89,17 +89,14 @@ a:hover {
 <div class="menu">
   <ul id="leftmenu">
     <li><a href="__APP__/Index/main" target="main" class="tabon">首页</a></li>
-      <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==5){ ?> <li><a href="__APP__/InstoreBook/index" target="main">入仓登记</a></li><?php } ?>
-    <li><a href="__APP__/InstoreQuery/index" target="main">入仓查询</a></li>
-      <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==5){ ?><li><a href="__APP__/OutstoreBook/index" target="main">出仓登记</a></li><?php } ?>
-    <li><a href="__APP__/OutstoreQuery/index" target="main">出仓查询</a></li>
-    <li><a href="__APP__/StoreCount/index" target="main">库存统计</a></li>
-      <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==2||$_SESSION['user']['user_type']==4||$_SESSION['user']['user_type']==5){ ?> <li><a href="__APP__/BaseData/index" target="main">基础数据</a></li><?php } ?>
+	<li><a href="__APP__/ShipmentBook/index" target="main">托运登记</a></li>  
+	<li><a href="__APP__/ShipmentQuery/index" target="main">托运查询</a></li>
+    <li><a href="__APP__/BaseData/guest" target="main">基础数据</a></li>
     <li><a href="__APP__/NoticeManage/index" target="main">通知管理</a></li>
     <li><a href="__APP__/Setting/index" target="main">个人设置</a></li>
-    <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==5){ ?><li><a href="__APP__/UserManage/index" target="main">用户管理</a></li><?php } ?>
-    <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==5){ ?><li><a href="__APP__/Backup/index" target="main">数据备份</a></li><?php } ?>
-    <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==5){ ?><li><a href="__APP__/Log/index" target="main">操作日志</a></li><?php } ?>
+    <li><a href="__APP__/UserManage/index" target="main">用户管理</a></li>
+	<li><a href="__APP__/Backup/index" target="main">数据备份</a></li>
+	<li><a href="__APP__/Log/index" target="main">操作日志</a></li>
   </ul>
 </div>
 </body>

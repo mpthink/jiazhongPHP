@@ -42,16 +42,10 @@
 </head>
 <body>
 <div class="container">
-  <h3>客户列表</h3>
+  <h3>收货单位列表</h3>
   选择列表
   <select name="jump" id="jump">
-    <option value="0" <?php if($action=="cate")echo "selected='true'" ?>>产品类别</option>
-    <option value="1" <?php if($action=="index")echo "selected='true'" ?>>产品列表</option>
-    <option value="2" <?php if($action=="store")echo "selected='true'" ?>>仓库列表</option>
     <option value="3" <?php if($action=="guest")echo "selected='true'" ?>>客户列表</option>
-      <option value="4" <?php if($action=="quality")echo "selected='true'" ?>>质量类别</option>
-      <option value="5" <?php if($action=="carry")echo "selected='true'" ?>>搬运组列表</option>
-	  <option value="6" <?php if($action=="deliver")echo "selected='true'" ?>>收货人列表</option>
   </select>
   <input type="button"  class="btn" id="button" value="添加客户" onclick="toAddGuest()"/>
 
@@ -75,12 +69,8 @@
                       <table class="datalist fixwidth">
                           <tr>
                               <th>客户名称</th>
-                              <!--<th>公司全名</th>-->
-
                               <th>客户编码</th>
                               <th>客户分类</th>
-                              <th>结算方式</th>
-                              <th>出货方式</th>
                               <th>单据有效期</th>
                               <th>联系电话</th>
                               <th>详细地址</th>
@@ -89,12 +79,9 @@
                           <?php foreach($list as $key=>$row){ ?>
                           <tr>
                               <td align="center"><?php echo $row["gust_name"]; ?></td>
-                              <!--<td align="center"><?php echo $row["gust_comfullname"]; ?></td>-->
 
                               <td align="center"><?php echo $row["gust_sn"]; ?></td>
                               <td align="center"><?php echo $row["gust_cate"]; ?></td>
-                              <td align="center"><?php echo $row["way_pay"]; ?></td>
-                              <td align="center"><?php echo $row["way_out"]; ?></td>
                               <td align="center"><?php echo $row["form_valid"]; ?></td>
 
                               <td align="center"><?php echo $row["gust_phone"]; ?></td>
@@ -108,8 +95,6 @@
                           </tr>
                       </table>
                   </form>
-
-
               </td>
           </tr>
 
