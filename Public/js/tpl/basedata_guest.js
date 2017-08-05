@@ -13,27 +13,12 @@ function delcate(g) {
 $("#jump").change(function () {
     var g = "";
     switch ($(this).val()) {
-        case"0":
-            g = "./index.php?s=/BaseData/cate";
-            break;
-        case"1":
-            g = "./index.php?s=/BaseData/index";
-            break;
-        case"2":
-            g = "./index.php?s=/BaseData/store";
-            break;
         case"3":
             g = "./index.php?s=/BaseData/guest";
             break;
-        case"4":
-            g = "./index.php?s=/BaseData/quality";
-            break;
         case"5":
-            g = "./index.php?s=/BaseData/carry";
+            g = "./index.php?s=/BaseData/domain";
             break;
-		case"6":
-            g = "./index.php?s=/BaseData/deliver";
-            break
     }
     ;
     window.location.href = g

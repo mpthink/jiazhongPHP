@@ -493,5 +493,55 @@ class BaseDataAction extends AppAction{
         $one=$model->where(array("pddeliver_id"=>$_GET['pddeliver_id']))->find();
         echo json_encode($one);
     }
+	
+	
+	//收货区域操作
+	public function domain() {
+        $model=M("shipment_domain");
+        $count = $model->count();
+        $Page = new Page($count,C('PAGE_SIZE'));
+        $show = $Page->show();
+        $this->assign('page',$show);
+        $list=$model->limit($Page->firstRow.','.$Page->listRows)->order("domain_id asc")->select();
+        $this->assign("list",$list);
+        $this->assign("action","domain");
+        $this->display();
+    }
+
+    public function doAddDomain(){
+        $model=M("shipment_domain");
+        $model->add($_GET);
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("添加收货人成功");
+        $this->redirect("domain");
+    }
+
+    public function toEditDomain() {
+        $model=M("shipment_domain");
+        $one=$model->where(array("domain_id"=>$_GET['domain_id']))->find();
+        $this->assign("one",$one);
+        $this->display();
+    }
+
+    public function doEditDomain(){
+        $model=M("shipment_domain");
+        $model->save($_GET);
+        $this->redirect("domain");
+    }
+
+
+    public function deleteDomain() {
+        $model=M("shipment_domain");
+        $model->where($_GET)->delete();
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("删除收货人成功");
+        $this->redirect("domain");
+    }
+
+    public function getProdDomainById() {
+        $model=M("shipment_domain");
+        $one=$model->where(array("domain_id"=>$_GET['domain_id']))->find();
+        echo json_encode($one);
+    }
 }
 ?>
