@@ -22,7 +22,7 @@ function toSearch() {
         var n = g.find("input[name='ship_back_start']").val();
         var o = g.find("input[name='ship_back_end']").val();
 		
-        action_url = "./index.php?s=/InstoreQuery/index";
+        action_url = "./index.php?s=/ShipmentQuery/index";
         if (i != '请输入关键字或空格')action_url += "/ship_customer/" + i;
         if (j != "")action_url += "/ship_input_start/" + j;
         if (k != "")action_url += "/ship_input_end/" + k;
@@ -52,8 +52,8 @@ function fillTip(g) {
 };
 
 function bindAutoComplete22() {
-    $("#ship_customer").catcomplete22({source: './index.php?s=/ShipmentBook/autoSelect22', minLength: 1, delay: 0, select: function (g, h) {
-        $('#ship_customer').val(h.item.gust_name);
+    $("#ship_customer22").catcomplete22({source: './index.php?s=/ShipmentBook/autoSelect22', minLength: 1, delay: 0, select: function (g, h) {
+        $('#ship_customer22').val(h.item.gust_name);
     }})
 };
 $.widget("custom.catcomplete22", $.ui.autocomplete, {_renderMenu: function (g, h) {
