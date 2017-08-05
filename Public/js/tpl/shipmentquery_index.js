@@ -14,7 +14,7 @@ function del(g) {
 function toSearch() {
     $("#dialog").dialog({height: 400, width: 650, modal: true, buttons: {"确认": function () {
         var g = $("#dialog").contents();
-        var i = g.find("input[name='ship_customer']").val();
+        var i = g.find("input[name='ship_customer22']").val();
         var j = g.find("input[name='ship_input_start']").val();
         var k = g.find("input[name='ship_input_end']").val();
         var l = g.find("input[name='ship_deliver_start']").val();
@@ -23,7 +23,7 @@ function toSearch() {
         var o = g.find("input[name='ship_back_end']").val();
 		
         action_url = "./index.php?s=/ShipmentQuery/index";
-        if (i != '请输入关键字或空格')action_url += "/ship_customer/" + i;
+        if (i != '请输入关键字或空格')action_url += "/ship_customer22/" + i;
         if (j != "")action_url += "/ship_input_start/" + j;
         if (k != "")action_url += "/ship_input_end/" + k;
         if (l != "")action_url += "/ship_deliver_start/" + l;

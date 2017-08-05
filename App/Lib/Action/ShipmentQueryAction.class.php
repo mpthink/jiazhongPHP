@@ -11,6 +11,11 @@ class ShipmentQueryAction extends AppAction{
             $map[$_GET["searchBy"]]=array("like","%{$s_keyword}%");
         }
 		
+		if($_GET["ship_customer22"]!=""){
+            $map["ship_customer"]=$_GET['ship_customer22'];
+            $this->assign("main_ship_customer",$_GET['ship_customer22']);
+        }
+		
 		//填表日期
         if($_GET["ship_input_start"]!=""&&$_GET["ship_input_end"]=="")
         {
@@ -125,147 +130,83 @@ class ShipmentQueryAction extends AppAction{
     public function exportISS(){
 
         $s_keyword = $_POST['keyword'];
-        if(strstr($s_keyword,'已勾')){
-            $s_keyword = 1;
-        }elseif(strstr($s_keyword,'未勾')){
-            $s_keyword = 0;
-        }elseif(strstr($s_keyword,'复核')){
-            $s_keyword = 2;
-        }elseif(strstr($s_keyword,'未提')){
-            $s_keyword = -1;
-        }
+		
         if($_POST["keyword"]!=""){
             $map[$_POST["searchBy"]]=array("like","%{$s_keyword}%");
         }
-
-        if($_POST["in_sellerunit"]!=""){
-            $map["b.ism_sellerunit"]=array("like","%{$_POST['in_sellerunit']}%");
+		
+		if($_POST["main_ship_customer"]!=""){
+            $map["ship_customer"]=$_POST["main_ship_customer"];
         }
-        if($_POST["in_danju_no"]!=""){
-            $map["b.ism_danju_no"]=array("like","%{$_POST['in_danju_no']}%");
-        }
-        if($_POST["in_prodname"]!=""){
-            $map["a.iss_prodname"]=array("like","%{$_POST['in_prodname']}%");
-        }
-
-        if($_POST["in_status"]!=""){
-            $map["b.ism_status"]=$_POST['in_status'];
-        }
-        if($_POST["in_store"]!=""){
-            $map["c.sto_name"]=array("like","%{$_POST['in_store']}%");
-        }
-        if($_POST["in_date_start"]!=""&&$_POST["in_date_end"]=="")
+		
+		//填表日期
+        if($_POST["main_ship_input_start"]!=""&&$_POST["main_ship_input_end"]=="")
         {
-            $map["b.ism_date"]=array("egt","{$_POST["in_date_start"]}".' 00:00:00');
+            $map["ship_input_date"]=array("egt","{$_POST['main_ship_input_start']}".' 00:00:00');
         }
-        if($_POST["in_date_start"]==""&&$_POST["in_date_end"]!="")
+        if($_POST["main_ship_input_start"]==""&&$_POST["main_ship_input_end"]!="")
         {
-            $map["b.ism_date"]=array("elt","{$_POST["in_date_end"]}".' 59:59:59');
+            $map["ship_input_date"]=array("elt","{$_POST['main_ship_input_end']}".' 59:59:59');
         }
-        if($_POST["in_date_start"]!=""&&$_POST["in_date_end"]!=""){
-            $map["b.ism_date"]=array(array("egt","{$_POST["in_date_start"]}".' 00:00:00'),array("elt","{$_POST["in_date_end"]}".' 59:59:59'));
+        if($_POST["main_ship_input_start"]!=""&&$_POST["main_ship_input_end"]!=""){
+            $map["ship_input_date"]=array(array("egt","{$_POST['main_ship_input_start']}".' 00:00:00'),array("elt","{$_POST['main_ship_input_end']}".' 59:59:59'));
         }
-		
-		//add for danju date
-		if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]=="")
+		//送货日期
+		if($_POST["main_ship_deliver_start"]!=""&&$_POST["main_ship_deliver_end"]=="")
         {
-            $map["b.ism_danju_date"]=array("egt","{$_POST["danju_date_start"]}".' 00:00:00');
+            $map["ship_deliver_date"]=array("egt","{$_POST['main_ship_deliver_start']}".' 00:00:00');
         }
-        if($_POST["danju_date_start"]==""&&$_POST["danju_date_end"]!="")
+        if($_POST["main_ship_deliver_start"]==""&&$_POST["main_ship_deliver_end"]!="")
         {
-            $map["b.ism_danju_date"]=array("elt","{$_POST["danju_date_end"]}".' 59:59:59');
+            $map["ship_deliver_date"]=array("elt","{$_POST['main_ship_deliver_end']}".' 59:59:59');
         }
-        if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]!=""){
-            $map["b.ism_danju_date"]=array(array("egt","{$_POST["danju_date_start"]}".' 00:00:00'),array("elt","{$_POST["danju_date_end"]}".' 59:59:59'));
+        if($_POST["main_ship_deliver_start"]!=""&&$_POST["main_ship_deliver_end"]!=""){
+            $map["ship_deliver_date"]=array(array("egt","{$_POST['main_ship_deliver_start']}".' 00:00:00'),array("elt","{$_POST['main_ship_deliver_end']}".' 59:59:59'));
+        }
+		//回柜日期
+		if($_POST["main_ship_back_start"]!=""&&$_POST["main_ship_back_end"]=="")
+        {
+            $map["ship_deliver_back_date"]=array("egt","{$_POST['main_ship_back_start']}".' 00:00:00');
+        }
+        if($_POST["main_ship_back_start"]==""&&$_POST["main_ship_back_end"]!="")
+        {
+            $map["ship_deliver_back_date"]=array("elt","{$_POST['main_ship_back_end']}".' 59:59:59');
+        }
+        if($_POST["main_ship_back_start"]!=""&&$_POST["main_ship_back_end"]!=""){
+            $map["ship_deliver_back_date"]=array(array("egt","{$_POST['main_ship_back_start']}".' 00:00:00'),array("elt","{$_POST['main_ship_back_end']}".' 59:59:59'));
         }
 		
-		//var_dump($map);
-		
-		
-        if($_POST["in_writer"]!=""){
-            $map["b.ism_writer"]=array("like","%{$_POST['in_writer']}%");
-        }
-        if($_POST["in_operator"]!=""){
-            $map["b.ism_operator"]=array("like","%{$_POST['in_operator']}%");
-        }
-		//因为分仓而增加，只有《=0的单据才输出， 分仓数据只在详细列表里面显示
-		$map['iss_id_p']=array("elt",0);
-		
-        $xlsName  = "入库单";
+        $xlsName  = "货物托运单";
+        
+		$xlsCell  = array(
+			array('ship_customer','收货单位'),
+			array('ship_final_address','最终目的地'),
+			array('ship_input_date','填表日期'),
+			array('ship_car_no','车号'),
+			array('ship_box_no1','柜号1'),
+			array('ship_box_no2','柜号2'),
+			array('ship_customer_address','收货地址'),
+			array('ship_customer_info','联系人/电话'),
+			array('ship_deliver_date','送货日期'),
+			array('ship_driver_to','送货司机'),
+			array('ship_driver_car_no','送货车牌'),
+			array('domain_name','送货区域'),
+			array('domain_price','提成'),
+			array('ship_driver_back','回柜司机'),
+			array('ship_driver_back_car_no','回柜车牌'),
+			array('ship_deliver_back_date','回柜日期'),
+			array('ship_sn','流水编号'),
+			array('ship_status','单据状态'),
+			array('ship_remark','单据备注'),
+			array('ship_inputer','制单员')
+		);
+        $filed = 'ship_customer,ship_final_address,DATE_FORMAT(ship_input_date,"%Y-%m-%d") ship_input_date,ship_car_no,ship_box_no1,ship_box_no2,ship_customer_address,ship_customer_info,DATE_FORMAT(ship_deliver_date,"%Y-%m-%d") ship_deliver_date,ship_driver_to,ship_driver_car_no,domain_name,domain_price,ship_driver_back,ship_driver_back_car_no,DATE_FORMAT(ship_deliver_back_date,"%Y-%m-%d") ship_deliver_back_date,ship_sn,CASE WHEN ship_status =0 THEN  "未审核" WHEN ship_status =1 THEN  "已审核" END ship_status,ship_remark,ship_inputer';
 
-        if(($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4)){
-            $xlsCell  = array(
-                array('ism_sellerunit','客户单位'),
-                array('ism_danju_no','客户单据号'),
-                array('ism_danju_date','客户单据日期'),
-                array('iss_prodname','品名规格'),
-				array('prod_code','货物编码'),
-                array('pdca_name','货物类别'),
-                array('prod_unit','计价单位'),
-                array('iss_quality','质量类别'),
-				array('prod_life','保质期(天)'),
-				array('iss_make_date','生产日期'),
-                array('iss_plancount','应收数量'),
-                array('iss_count','实收数量'),
-				array('iss_kuwei_status','分库状态'),
-				array('sto_name','仓库'),
-                array('prod_price','装卸成本单价'),
-                array('prod_realprice','装卸收入单价'),
-                array('prod_volume','单位立方量'),
-				array('prod_weight','单件重量'),
-                array('ism_carry','搬运组'),
-                array('ism_date','制单日期'),
-                array('ism_writer','制单员'),
-                array('ism_status','单据状态'),
-                array('ism_status_time','勾单日期'),
-                array('ism_operator','勾单员'),
-				array('ism_phone','车牌号'),
-                array('ism_remark','单据备注')
-            );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_price,prod_realprice,prod_volume,prod_weight,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_phone,ism_remark';
-        }else{
-            $xlsCell  = array(
-                array('ism_sellerunit','客户单位'),
-                array('ism_danju_no','客户单据号'),
-                array('ism_danju_date','客户单据日期'),
-                array('iss_prodname','品名规格'),
-				array('prod_code','货物编码'),
-                array('pdca_name','货物类别'),
-                array('prod_unit','计价单位'),
-                array('iss_quality','质量类别'),
-				array('prod_life','保质期(天)'),
-				array('iss_make_date','生产日期'),
-                array('iss_plancount','应收数量'),
-                array('iss_count','实收数量'),
-				array('iss_kuwei_status','分库状态'),
-				array('sto_name','仓库'),
-                array('prod_volume','单位立方量'),
-				array('prod_weight','单件重量'),
-                array('ism_carry','搬运组'),
-                array('ism_date','制单日期'),
-                array('ism_writer','制单员'),
-                array('ism_status','单据状态'),
-                array('ism_status_time','勾单日期'),
-                array('ism_operator','勾单员'),
-				array('ism_phone','车牌号'),
-                array('ism_remark','单据备注')
-            );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_volume,prod_weight,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_phone,ism_remark';
-        }
-
-        $model_sub=M("instore_sub");
-
-        $list_sub = $model_sub->alias('a')->join('twms_shipment_main b on a.iss_mainid	=b.ship_id')->
-            join('twms_prod_cate c on a.iss_cate=c.pdca_id')->
-            join('twms_product d on a.iss_prod	 = d.prod_id')->
-			join('twms_store e on a.iss_store	 = e.sto_id')->
-            where($map)->
-            Field($filed)->
-            order('ism_sellerunit,ism_danju_no')->
-            select();
-        //var_dump($model_sub->getLastSql());
+		$model_main=M("shipment_main");
+        $main=$model_main->join('twms_shipment_domain on ship_deliver_domain=domain_id')->where($map)->Field($filed)->order('ship_id')->select();
+		
         $common = new CommonAction();
-        $common->exportExcel($xlsName,$xlsCell,$list_sub);
+        $common->exportExcel($xlsName,$xlsCell,$main);
 
     }
 
