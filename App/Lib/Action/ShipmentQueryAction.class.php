@@ -1,5 +1,10 @@
 <?php
 
+ini_set('display_errors',1);            //错误信息  
+ini_set('display_startup_errors',1);    //php启动错误信息  
+error_reporting(-1);                    //打印出所有的 错误信息  
+ini_set('error_log', dirname(__FILE__).'/error_log.txt'); //将出错信息输出到一个文本文件
+
 import("@.Action.Common");
 class ShipmentQueryAction extends AppAction{
     public function index() {
@@ -126,6 +131,141 @@ class ShipmentQueryAction extends AppAction{
         $this->redirect("index");
     }
 
+	//导入excel
+	public function importISS(){
+		import('@.ORG.Net.UploadFile');
+		 $upload = new UploadFile();// 实例化上传类
+		 $upload->maxSize=3145728;// 设置附件上传大小
+		 $upload->exts=array('xls', 'xlsx');// 设置附件上传类型
+		 $upload->savePath  = './Public/Uploads/'; // 设置附件上传（子）目录
+		 // 上传文件
+		 $upload->saveRule = 'time';// 采用时间戳命名
+		 
+		 $info=$upload->upload();
+		 if(!$info) {// 上传错误提示错误信息
+			$this->error("上传失败");
+		}else{// 上传成功
+			//$this->success('上传成功！');
+			$fileinfo=$upload->getUploadFileInfo();
+			$file = $fileinfo[0]["savepath"].$fileinfo[0]["savename"];
+			vendor("PHPExcel.PHPExcel");
+			vendor("PHPExcel.IOFactory");
+			$extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+			if ($extension =='xlsx') {
+				$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+			} else if ($extension =='xls') {
+				$objReader = PHPExcel_IOFactory::createReader('Excel5');
+			}
+			
+			try{
+				$PHPReader = $objReader->load($file,$encode='utf-8');
+			}catch(Exception $e){}
+			if(!isset($PHPReader)) return array("error"=>0,'message'=>'read error!');
+			
+			$sheet = $PHPReader->getSheet(0);
+			$highestRow = $sheet->getHighestRow(); // 取得总行数
+			$highestColumn = $sheet->getHighestColumn(); // 取得总列数
+			$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+			
+			$excelData=array();
+			for($row=1;$row<=$highestRow;$row++){
+				for($col=0;$col<$highestColumnIndex;$col++){
+					$cell = $sheet->getCellByColumnAndRow($col,$row)->getValue();
+					if(is_object($cell)){
+						$cell= $cell->__toString();
+					}
+					$excelData[$row][] = $cell;
+				}
+			}
+			
+			if(trim($excelData[1][0])=='序号'&&trim($excelData[1][1])=='装货日期'&&trim($excelData[1][2])=='单位名称'&&trim($excelData[1][3])=='车号'&&trim($excelData[1][4])=='柜号'&&trim($excelData[1][5])=='柜号'&&trim($excelData[1][6])=='填表日期'&&trim($excelData[1][7])=='收货地址'&&trim($excelData[1][8])=='联系电话'&&trim($excelData[1][9])=='到站日期'&&trim($excelData[1][10])=='送货日期'&&trim($excelData[1][11])=='送货车牌'&&trim($excelData[1][12])=='送货司机'&&trim($excelData[1][13])=='备注'){			
+				$this->importToDB($excelData,$highestRow,$highestColumnIndex);
+				$this->redirect("ShipmentQuery/index");
+			}else{
+				$this->error("excel内容问题，请严格按照模板文件整理excel");
+			}
+		}
+	}
+	
+	public function importToDB($excelData,$highestRow,$highestColumnIndex){
+		$model_main=M("shipment_main");
+		$formatDate = new PHPExcel_Shared_Date();
+		for($row=2;$row<=$highestRow;$row++){
+			if($excelData[$row][1]!=NULL){
+				$data["ship_load_date"]=date('Y-m-d H:i:s', $formatDate->ExcelToPHP($excelData[$row][1]));
+			}else{
+				$data["ship_load_date"]="";
+			}
+			if($excelData[$row][2]!=NULL){
+				$data["ship_customer"]=$excelData[$row][2];
+			}else{
+				$data["ship_customer"]="";
+			}
+			if($excelData[$row][3]!=NULL){
+				$data["ship_car_no"]=$excelData[$row][3];
+			}else{
+				$data["ship_car_no"]="";
+			}
+			if($excelData[$row][4]!=NULL){
+				$data["ship_box_no1"]=$excelData[$row][4];
+			}else{
+				$data["ship_box_no1"]="";
+			}
+			
+			
+			if($excelData[$row][5]!=NULL){
+				$data["ship_box_no2"]=$excelData[$row][5];
+			}else{
+				$data["ship_box_no2"]="";
+			}
+			if($excelData[$row][6]!=NULL){			
+				$data["ship_input_date"]=date('Y-m-d H:i:s', $formatDate->ExcelToPHP($excelData[$row][6]));
+			}else{
+				$data["ship_input_date"]="";
+			}
+			if($excelData[$row][7]!=NULL){
+				$data["ship_customer_address"]=$excelData[$row][7];
+			}else{
+				$data["ship_customer_address"]="";
+			}
+			if($excelData[$row][8]!=NULL){
+				$data["ship_customer_info"]=$excelData[$row][8];
+			}else{
+				$data["ship_customer_info"]="";
+			}
+			
+			if($excelData[$row][9]!=NULL){
+				$data["ship_arrive_date"]=date('Y-m-d H:i:s', $formatDate->ExcelToPHP($excelData[$row][9]));
+			}else{
+				$data["ship_arrive_date"]="";
+			}
+			if($excelData[$row][10]!=NULL){
+				$data["ship_deliver_date"]=date('Y-m-d H:i:s', $formatDate->ExcelToPHP($excelData[$row][10]));
+			}else{
+				$data["ship_deliver_date"]="";
+			}
+			if($excelData[$row][11]!=NULL){
+				$data["ship_driver_car_no"]=$excelData[$row][11];
+			}else{
+				$data["ship_driver_car_no"]="";
+			}
+			if($excelData[$row][12]!=NULL){
+				$data["ship_driver_to"]=$excelData[$row][12];
+			}else{
+				$data["ship_driver_to"]="";
+			}
+			if($excelData[$row][13]!=NULL){
+				$data["ship_remark"]=$excelData[$row][13];
+			}else{
+				$data["ship_remark"]="";
+			}
+			
+			$data["ship_sn"]='IN-'.date('Ymd-His-').rand(100,999);
+			$model_main->add($data);
+		}	
+	}
+	
+	
 	//导出excel
     public function exportISS(){
 

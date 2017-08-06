@@ -27,6 +27,8 @@ CREATE TABLE `twms_shipment_main` (
   `ship_remark` varchar(600) NOT NULL,
   `ship_inputer` varchar(15) DEFAULT NULL,
   `ship_input_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '填表日期',
+  `ship_load_date` timestamp NULL COMMENT '装货日期',
+  `ship_arrive_date` timestamp NULL DEFAULT NULL COMMENT '到站日期',
   `ship_reviwer` varchar(15) DEFAULT NULL,
   `ship_reviwer_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`ship_id`)

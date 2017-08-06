@@ -42,7 +42,7 @@
 <br>
   <div align="center"><font size="3" color="black"><b>货物托运单</b></font></div>
   <br>
-  <div align="center"><font size="1" color="black">地址：海口市粤海大道海口火车站19道集装箱货场 &nbsp;&nbsp电话：0898-31684052 13825138001 &nbsp;&nbsp;传真：0898-31684052</font></div>
+  <p align="center" style="font-size:7px;-webkit-text-size-adjust:none">地址:海口市粤海大道海口火车站19道集装箱货场 电话:0898-31684052 13825138001 传真:0898-31684052</p>
   <br>
   <form action="__URL__/doApprove" method="post">
       <table width="100%" style="border-collapse:separate; border-spacing:0px 10px;" class="datalist fixwidth">
@@ -97,15 +97,21 @@
 			<td width="25%">
 				<?php echo $main['ship_sn'] ?>
 			</td>
-			<td width="10%" align="right" class="noPrint">单据状态：</td>
-			<td width="30%" colspan="5" class="noPrint">
+			<td width="15%" align="right">装货日期：</td>
+			<td width="20%"><?php echo substr($main['ship_load_date'],0,10) ?></td>
+			<td width="10%" align="right">到站日期：</td>
+			<td width="15%" align="left"><?php echo substr($main['ship_arrive_date'],0,10) ?></td>
+		</tr>
+		
+		<tr class="noPrint">
+             <td width="10%" align="right">单据状态：</td>
+             <td width="85" colspan="5">
 				<?php
                         if($main["ship_status"]==1){echo "<font color='#0000FF'><b>已审核</b></font>";};
                         if($main["ship_status"]==0){echo "<font color='red'><b>未审核</b></font>";};
                  ?>
-			</td>
-			
-		</tr>
+			 </td>
+         </tr>
 		
          <tr>
              <td width="10%" align="right">单据备注：</td>
@@ -116,11 +122,20 @@
 
      </table>
 	<div align="center">
-	  制单人：&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;
-      <input name='ship_id' type='hidden' value='<?php echo $main["ship_id"]; ?>'>
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  司机签名：&nbsp;&nbsp;&nbsp;&nbsp;
-      
+	  <table width="100%">
+		  <tr>
+			<td width="50%" align="center">制单人：&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;
+			  <input name='ship_id' type='hidden' value='<?php echo $main["ship_id"]; ?>'>
+			  </td>
+			<td width="50%" align="left">
+				收货人签字/盖章：
+			</td>
+		  </tr>
+		  <tr>
+			<td width="50%"></td>
+			<td width="50%" align="left">备注：箱体、封条完好相符</td>
+		  </tr>
+	  </table>
 	</div>
       <div class="noPrint" align="center">
           <input class="btn" type="button" value="编辑"  onclick="editIN(<?php echo $main["ship_id"]; ?>)"/>

@@ -31,4 +31,6 @@ bindAutoComplete22();
 $("#ship_input_date").datepicker();
 $("#ship_deliver_date").datepicker();
 $("#ship_deliver_back_date").datepicker();
+$("#ship_load_date").datepicker();
+$("#ship_arrive_date").datepicker();
 

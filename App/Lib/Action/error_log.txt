@@ -1,0 +1,170 @@
+[06-Aug-2017 18:50:45 PRC] PHP Fatal error:  Class 'PHPExcel_CachedObjectStorageFactory' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 30
+[06-Aug-2017 18:50:45 PRC] PHP Stack trace:
+[06-Aug-2017 18:50:45 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:50:45 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:50:45 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:50:45 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:50:45 PRC] PHP   5. ShipmentQueryAction->exportISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:50:45 PRC] PHP   6. CommonAction->exportExcel() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:289
+[06-Aug-2017 18:51:09 PRC] PHP Fatal error:  Class 'PHPExcel_CachedObjectStorageFactory' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 30
+[06-Aug-2017 18:51:09 PRC] PHP Stack trace:
+[06-Aug-2017 18:51:09 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:51:09 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:51:09 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:329
+[06-Aug-2017 18:51:09 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305}() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305
+[06-Aug-2017 18:51:09 PRC] PHP   5. ShipmentQueryAction->exportISS() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305
+[06-Aug-2017 18:51:09 PRC] PHP   6. CommonAction->exportExcel() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:289
+[06-Aug-2017 18:52:07 PRC] PHP Fatal error:  Class 'PHPExcel_CachedObjectStorageFactory' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 30
+[06-Aug-2017 18:52:07 PRC] PHP Stack trace:
+[06-Aug-2017 18:52:07 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:52:07 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:52:07 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:52:07 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:52:07 PRC] PHP   5. ShipmentQueryAction->exportISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:52:07 PRC] PHP   6. CommonAction->exportExcel() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:289
+[06-Aug-2017 18:53:38 PRC] PHP Fatal error:  Class 'PHPExcel_Settings' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 33
+[06-Aug-2017 18:53:38 PRC] PHP Stack trace:
+[06-Aug-2017 18:53:38 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:53:38 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:53:38 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:53:38 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:53:38 PRC] PHP   5. ShipmentQueryAction->exportISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:53:38 PRC] PHP   6. CommonAction->exportExcel() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:289
+[06-Aug-2017 18:57:42 PRC] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\IOFactory.php on line 170
+[06-Aug-2017 18:57:42 PRC] PHP Stack trace:
+[06-Aug-2017 18:57:42 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:57:42 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:57:42 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:57:42 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:57:42 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:57:42 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 18:57:42 PRC] PHP   7. PHPExcel_IOFactory::createReader() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:82
+[06-Aug-2017 18:58:46 PRC] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 82
+[06-Aug-2017 18:58:46 PRC] PHP Stack trace:
+[06-Aug-2017 18:58:46 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:58:46 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:58:46 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:58:46 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:58:46 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:58:46 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 18:59:20 PRC] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 83
+[06-Aug-2017 18:59:20 PRC] PHP Stack trace:
+[06-Aug-2017 18:59:20 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 18:59:20 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 18:59:20 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:59:20 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:59:20 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 18:59:20 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:00:15 PRC] PHP Fatal error:  Class 'PHPExcel_Reader_DefaultReadFilter' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 66
+[06-Aug-2017 19:00:15 PRC] PHP Stack trace:
+[06-Aug-2017 19:00:15 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:00:15 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:00:15 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:15 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:15 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:15 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:00:15 PRC] PHP   7. PHPExcel_IOFactory::createReader() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:84
+[06-Aug-2017 19:00:15 PRC] PHP   8. PHPExcel_Reader_Excel2007->__construct() D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\IOFactory.php:170
+[06-Aug-2017 19:00:41 PRC] PHP Fatal error:  Class 'PHPExcel_ReferenceHelper' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 67
+[06-Aug-2017 19:00:41 PRC] PHP Stack trace:
+[06-Aug-2017 19:00:41 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:00:41 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:00:41 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:41 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:41 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:00:41 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:00:41 PRC] PHP   7. PHPExcel_IOFactory::createReader() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:85
+[06-Aug-2017 19:00:41 PRC] PHP   8. PHPExcel_Reader_Excel2007->__construct() D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\IOFactory.php:170
+[06-Aug-2017 19:01:00 PRC] PHP Fatal error:  Class 'PHPExcel' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 351
+[06-Aug-2017 19:01:00 PRC] PHP Stack trace:
+[06-Aug-2017 19:01:00 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:01:00 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:01:00 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:01:00 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:01:00 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:01:00 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:01:00 PRC] PHP   7. PHPExcel_Reader_Excel2007->load() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:95
+[06-Aug-2017 19:03:57 PRC] PHP Fatal error:  Class 'PHPExcel' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 351
+[06-Aug-2017 19:03:57 PRC] PHP Stack trace:
+[06-Aug-2017 19:03:57 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:03:57 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:03:57 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:03:57 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:03:57 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:03:57 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:03:57 PRC] PHP   7. PHPExcel_Reader_Excel2007->load() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:95
+[06-Aug-2017 19:05:11 PRC] PHP Fatal error:  Class 'PHPExcel' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 351
+[06-Aug-2017 19:05:11 PRC] PHP Stack trace:
+[06-Aug-2017 19:05:11 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:05:11 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:05:11 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:05:11 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:05:12 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:05:12 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:05:12 PRC] PHP   7. PHPExcel_Reader_Excel2007->load() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:95
+[06-Aug-2017 19:06:21 PRC] PHP Fatal error:  Class 'PHPExcel' not found in D:\wamp\www\jiazhongPHP\ThinkPHP\Vendor\PHPExcel\Reader\Excel2007.php on line 351
+[06-Aug-2017 19:06:21 PRC] PHP Stack trace:
+[06-Aug-2017 19:06:21 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:06:21 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:06:21 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:329
+[06-Aug-2017 19:06:21 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305}() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305
+[06-Aug-2017 19:06:21 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\ThinkPHP\Lib\Think\Core\App.class.php:305
+[06-Aug-2017 19:06:21 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:06:21 PRC] PHP   7. PHPExcel_Reader_Excel2007->load() D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php:95
+[06-Aug-2017 19:08:45 PRC] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007' not found in D:\wamp\www\jiazhongPHP\App\Lib\Action\CommonAction.class.php on line 82
+[06-Aug-2017 19:08:45 PRC] PHP Stack trace:
+[06-Aug-2017 19:08:45 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:08:45 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:08:45 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:08:45 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:08:45 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:08:45 PRC] PHP   6. CommonAction->importExecl() D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:154
+[06-Aug-2017 19:25:54 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:25:54 PRC] PHP Stack trace:
+[06-Aug-2017 19:25:54 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:25:54 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:25:54 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:25:54 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:25:54 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:19 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:26:19 PRC] PHP Stack trace:
+[06-Aug-2017 19:26:19 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:26:19 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:26:19 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:19 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:19 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:48 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:26:48 PRC] PHP Stack trace:
+[06-Aug-2017 19:26:48 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:26:48 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:26:48 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:48 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:26:48 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:27:02 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:27:02 PRC] PHP Stack trace:
+[06-Aug-2017 19:27:02 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:27:02 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:27:02 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:27:02 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:27:02 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:02 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:29:02 PRC] PHP Stack trace:
+[06-Aug-2017 19:29:02 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:29:02 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:29:02 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:02 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:02 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:42 PRC] PHP Fatal error:  Call to a member function getCellByColumnAndRow() on null in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 174
+[06-Aug-2017 19:29:42 PRC] PHP Stack trace:
+[06-Aug-2017 19:29:42 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:29:42 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:29:42 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:42 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:29:42 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:48:53 PRC] PHP Fatal error:  Call to undefined function importToDB() in D:\wamp\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php on line 179
+[06-Aug-2017 19:48:53 PRC] PHP Stack trace:
+[06-Aug-2017 19:48:53 PRC] PHP   1. {main}() D:\wamp\www\jiazhongPHP\index.php:0
+[06-Aug-2017 19:48:53 PRC] PHP   2. App::run() D:\wamp\www\jiazhongPHP\index.php:20
+[06-Aug-2017 19:48:53 PRC] PHP   3. App::exec() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:48:53 PRC] PHP   4. call_user_func:{D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[06-Aug-2017 19:48:53 PRC] PHP   5. ShipmentQueryAction->importISS() D:\wamp\www\jiazhongPHP\App\Runtime\~runtime.php:2

@@ -1,6 +1,7 @@
 <?php
 
 Vendor('PHPExcel.PHPExcel');
+vendor("PHPExcel.IOFactory");
 class CommonAction extends AppAction{
     /**
     +----------------------------------------------------------
@@ -26,7 +27,7 @@ class CommonAction extends AppAction{
             {require_once($file);}
         }
         spl_autoload_register('loader');
-
+		
 		$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;  
 		$cacheSettings = array(' memoryCacheSize'  => '8MB');  
 		PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
@@ -73,8 +74,17 @@ class CommonAction extends AppAction{
         if(!file_exists($file)){
             return array("error"=>0,'message'=>'file not found!');
         }
-        Vendor("PHPExcel.PHPExcel.IOFactory");
-        $objReader = PHPExcel_IOFactory::createReader('Excel5');
+        
+		$extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+		if ($extension =='xlsx') {
+			$objReader = new PHPExcel_Reader_Excel2007();
+		} else if ($extension =='xls') {
+			$objReader = new PHPExcel_Reader_Excel5();
+		}else{
+			var_dump("导入失败，不支持的文件");
+			die;
+		}
+		
         try{
             $PHPReader = $objReader->load($file);
         }catch(Exception $e){}

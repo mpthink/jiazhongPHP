@@ -36,6 +36,13 @@
 <body>
 <div class="container">
   <h3>托运单查询</h3>
+	
+	<form method="post" action="__URL__/importISS" enctype="multipart/form-data">
+         <h3>导入Excel表：</h3><input  type="file" name="file_stu" />
+
+           <input type="submit"  value="导入" class="btn"/>
+	</form>
+
 
    <table>
        <form action="__URL__/exportISS" method="post">
@@ -81,12 +88,12 @@
             <th>车号</th>
 			<th>柜号1</th>
             <th>柜号2</th>
-            <th>收货地址</th>
+            <th width="12%">收货地址</th>
 			<th>填表日期</th>
             <th>送货司机</th>
 			<th>送货日期</th>
-			<th>回柜司机</th>
-			<th>回柜日期</th>
+			<th>装货日期</th>
+			<th>到站日期</th>
 			<th>操作</th>
         </tr>
         <?php foreach($list as $key=>$row){ ?>
@@ -109,8 +116,8 @@
 			<td align="center"><?php echo $row["ship_driver_back"]; ?></td>
 			<td align="center"><?php echo substr($row["ship_deliver_back_date"],0,10); ?></td>
 			
-			<td align="center"><?php echo $row["ship_driver_to"]; ?></td>
-			<td align="center"><?php echo substr($row["ship_deliver_date"],0,10); ?></td>
+			<td align="center"><?php echo substr($row["ship_load_date"],0,10); ?></td>
+			<td align="center"><?php echo substr($row["ship_arrive_date"],0,10); ?></td>
 		
 		  <td align="center">
 			  &nbsp;&nbsp;
