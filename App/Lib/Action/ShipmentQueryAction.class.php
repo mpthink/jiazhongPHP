@@ -182,7 +182,7 @@ class ShipmentQueryAction extends AppAction{
 				$this->importToDB($excelData,$highestRow,$highestColumnIndex);
 				$this->redirect("ShipmentQuery/index");
 			}else{
-				$this->error("excel内容问题，请严格按照模板文件整理excel");
+				$this->error("excel 内容问题，请严格按照模板文件修改excel，标题行:序号	装货日期	单位名称	车号	柜号	柜号	填表日期	收货地址	联系电话	到站日期	 送货日期	送货车牌	送货司机	备注");
 			}
 		}
 	}
