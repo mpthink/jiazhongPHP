@@ -115,10 +115,13 @@
 
 
      </table>
-
-    制单人：&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;
+	<div align="center">
+	  制单人：&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;
       <input name='ship_id' type='hidden' value='<?php echo $main["ship_id"]; ?>'>
-
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  司机签名：&nbsp;&nbsp;&nbsp;&nbsp;
+      
+	</div>
       <div class="noPrint" align="center">
           <input class="btn" type="button" value="编辑"  onclick="editIN(<?php echo $main["ship_id"]; ?>)"/>
           <input class="btn" type="button" value="审核"  onclick="review(<?php echo $main["ship_id"]; ?>)"/>
