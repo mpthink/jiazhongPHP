@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: cang7
+-- Host: 127.0.0.1    Database: cangjiazhong
 -- ------------------------------------------------------
 -- Server version	5.7.15-log
 
@@ -15,9 +15,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP SCHEMA IF EXISTS `cang7`;
-CREATE SCHEMA IF NOT EXISTS `cang7` DEFAULT CHARACTER SET UTF8;
-USE `cang7`;
+DROP SCHEMA IF EXISTS `cangjiazhong`;
+CREATE SCHEMA IF NOT EXISTS `cangjiazhong` DEFAULT CHARACTER SET UTF8;
+USE `cangjiazhong`;
 
 --
 -- Table structure for table `twms_backup`

@@ -512,7 +512,7 @@ class BaseDataAction extends AppAction{
         $model=M("shipment_domain");
         $model->add($_GET);
         import('@.ORG.Util.SysLog');
-        SysLog::writeLog("添加收货人成功");
+        SysLog::writeLog("添加收货区域成功");
         $this->redirect("domain");
     }
 
@@ -534,7 +534,7 @@ class BaseDataAction extends AppAction{
         $model=M("shipment_domain");
         $model->where($_GET)->delete();
         import('@.ORG.Util.SysLog');
-        SysLog::writeLog("删除收货人成功");
+        SysLog::writeLog("删除收货区域成功");
         $this->redirect("domain");
     }
 
@@ -543,5 +543,56 @@ class BaseDataAction extends AppAction{
         $one=$model->where(array("domain_id"=>$_GET['domain_id']))->find();
         echo json_encode($one);
     }
+	
+	//司机操作
+	public function driver() {
+        $model=M("shipment_driver");
+        $count = $model->count();
+        $Page = new Page($count,C('PAGE_SIZE'));
+        $show = $Page->show();
+        $this->assign('page',$show);
+        $list=$model->limit($Page->firstRow.','.$Page->listRows)->order("driver_id asc")->select();
+        $this->assign("list",$list);
+        $this->assign("action","driver");
+        $this->display();
+    }
+
+    public function doAddDriver(){
+        $model=M("shipment_driver");
+        $model->add($_GET);
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("添加司机成功");
+        $this->redirect("driver");
+    }
+
+    public function toEditDriver() {
+        $model=M("shipment_driver");
+        $one=$model->where(array("driver_id"=>$_GET['driver_id']))->find();
+        $this->assign("one",$one);
+        $this->display();
+    }
+
+    public function doEditDriver(){
+        $model=M("shipment_driver");
+        $model->save($_GET);
+        $this->redirect("driver");
+    }
+
+
+    public function deleteDriver() {
+        $model=M("shipment_driver");
+        $model->where($_GET)->delete();
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("删除司机成功");
+        $this->redirect("driver");
+    }
+
+    public function getDriverById() {
+        $model=M("shipment_driver");
+        $one=$model->where(array("driver_id"=>$_GET['driver_id']))->find();
+        echo json_encode($one);
+    }
+	
+	
 }
 ?>

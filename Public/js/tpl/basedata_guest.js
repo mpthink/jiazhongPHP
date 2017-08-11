@@ -19,10 +19,15 @@ $("#jump").change(function () {
         case"5":
             g = "./index.php?s=/BaseData/domain";
             break;
+		case"6":
+            g = "./index.php?s=/BaseData/driver";
+            break;
     }
     ;
     window.location.href = g
 });
+
+
 function toAddGuest() {
     $("#dialog").dialog({height: 400, width: 650, title: '客户添加', modal: true, buttons: {"保存": function () {
         var g = $('#gust_name').val();

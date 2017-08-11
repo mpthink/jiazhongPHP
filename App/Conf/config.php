@@ -1,7 +1,7 @@
 <?php return array('URL_MODEL'=>3,
 'DB_TYPE'=>'mysql',
 'DB_HOST'=>'localhost',
-'DB_NAME'=>'cang7',
+'DB_NAME'=>'cangjiazhong',
 'DB_USER'=>'root',
 'DB_PWD'=>'phpwind.net',
 'DB_PORT'=>'3306',

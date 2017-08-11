@@ -3,6 +3,7 @@
         window.location.href = "./index.php?s=/BaseData/deleteDomain/domain_id/" + g
     }
 };
+
 $("#jump").change(function () {
     var g = "";
     switch ($(this).val()) {
@@ -12,10 +13,14 @@ $("#jump").change(function () {
         case"5":
             g = "./index.php?s=/BaseData/domain";
             break;
+		case"6":
+            g = "./index.php?s=/BaseData/driver";
+            break;
     }
     ;
     window.location.href = g
 });
+
 function toAddDomain() {
     $("#dialog").dialog({height: 400, width: 650, title: '收货区域添加', modal: true, buttons: {"保存": function () {
         var g = $("#domain_name").val();

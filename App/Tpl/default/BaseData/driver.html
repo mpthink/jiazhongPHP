@@ -25,28 +25,30 @@
 </head>
 <body>
 <div class="container">
-  <h3>送货区域列表</h3>
+  <h3>司机列表</h3>
   选择列表
   <select name="jump" id="jump">
-    <option value="3" <?php if($action=="guest")echo "selected='true'" ?>>客户列表</option>
-    <option value="5" <?php if($action=="domain")echo "selected='true'" ?>>送货区域列表</option>
-	<option value="6" <?php if($action=="driver")echo "selected='true'" ?>>司机列表</option>
+	  <option value="3" <?php if($action=="guest")echo "selected='true'" ?>>客户列表</option>
+      <option value="5" <?php if($action=="domain")echo "selected='true'" ?>>送货区域列表</option>
+	  <option value="6" <?php if($action=="driver")echo "selected='true'" ?>>司机列表</option>
   </select>
-  <input type="button"  class="btn" id="button" value="添加收货区域" onclick="toAddDomain()"/>
+  <input type="button"  class="btn" id="button" value="添加司机" onclick="toAddDriver()"/>
   <div class="mainbox">
   
     <form action="admin.php?m=cache&a=update" method="post">
       <table width="100%" class="datalist fixwidth">
         <tr>
-          <th>收货区域</th>
-		  <th>司机提成</th>
+          <th>司机</th>
+		  <th>车牌</th>
+		  <th>备注</th>
           <th>操作</th>
         </tr>
         <?php foreach($list as $key=>$row){ ?>
         <tr>
-          <td align="center"><?php echo $row["domain_name"]; ?></a></td>
-		  <td align="center"><?php echo $row["domain_price"]; ?></a></td>
-          <td align="center"><a href="#" onclick="toEditDomain(<?php echo $row["domain_id"]; ?>)">编辑</a>&nbsp;&nbsp;<a href="#" onclick="del(<?php echo $row["domain_id"]; ?>)">删除</a></td>
+          <td align="center"><?php echo $row["driver_name"]; ?></a></td>
+		  <td align="center"><?php echo $row["driver_car_no"]; ?></a></td>
+		  <td align="center"><?php echo $row["driver_note"]; ?></a></td>
+          <td align="center"><a href="#" onclick="toEditDriver(<?php echo $row["driver_id"]; ?>)">编辑</a>&nbsp;&nbsp;<a href="#" onclick="del(<?php echo $row["driver_id"]; ?>)">删除</a></td>
         </tr>
         <?php } ?>
         <tr class="nobg">
@@ -59,16 +61,19 @@
     <br><br>
     <table width="100%" border="0" align="left" class="p_table2">
       <tr>
-        <td width="35%" height="30" align="right">收货区域：</td>
-        <td width="65%" align="left"><input name="domain_name" type="text" id="domain_name" size="40" value="<?php echo $one['domain_name']; ?>"/></td>
+        <td width="35%" height="30" align="right">司机</td>
+        <td width="65%" align="left"><input name="driver_name" type="text" id="driver_name" size="40" value="<?php echo $one['driver_name']; ?>"/></td>
       </tr>
 	  <tr>
-        <td width="35%" height="30" align="right">司机提成：</td>
-        <td width="65%" align="left"><input name="domain_price" type="text" id="domain_price" size="40" value="<?php echo $one['domain_price']; ?>"/></td>
+        <td width="35%" height="30" align="right">车牌：</td>
+        <td width="65%" align="left"><input name="driver_car_no" type="text" id="driver_car_no" size="40" value="<?php echo $one['driver_car_no']; ?>"/></td>
       </tr>
+	  <tr>
+        <td width="35%" height="30" align="right">备注： </td>
+        <td width="65%" align="left"><input name="driver_note" type="text" id="driver_note" size="50" value="<?php echo $one['driver_note']; ?>"/></td>
       </tr>
     </table>
   </div>
 </div>
-<script language="JavaScript" src="__PUBLIC__/js/tpl/basedata_domain.js" type="text/javascript"></script>
+<script language="JavaScript" src="__PUBLIC__/js/tpl/basedata_driver.js" type="text/javascript"></script>
 <layout name="Public:footer" cache="120" />
