@@ -590,4 +590,17 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP TABLE IF EXISTS `twms_shipment_driver`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `twms_shipment_driver` (
+  `driver_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `driver_name` varchar(30) DEFAULT NULL,
+  `driver_car_no` varchar(20) DEFAULT NULL,
+  `driver_note` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`driver_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
 -- Dump completed on 2017-08-06 22:03:31
+
+
