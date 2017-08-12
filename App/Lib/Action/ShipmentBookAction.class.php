@@ -39,5 +39,26 @@ class ShipmentBookAction extends AppAction{
         echo json_encode($result);
     }
 	
+	public function getDriver(){
+        $model=M("shipment_driver");
+        if($_GET['term']){
+            $driver_name=trim($_GET['term']);
+            $where["driver_name"]=array("like","%$driver_name%");
+            $where["driver_car_no"]=array("like","%$driver_name%");
+            $where['_logic'] = 'OR';
+        }
+		$list=$model->where($where)->order('driver_name')->select();
+		foreach($list as $row){
+            $result[]=array(
+                'label'=>$row['driver_name'],
+                'category'=>$row['driver_car_no'],
+                'value'=>$row['driver_name'],
+				'driver_name'=>$row['driver_name'],
+				'driver_car_no'=>$row['driver_car_no'],
+            );
+        }
+        echo json_encode($result);
+	}
+	
 }
 ?>

@@ -26,7 +26,26 @@ $.widget("custom.catcomplete22", $.ui.autocomplete, {_renderMenu: function (g, h
         i._renderItem(g, l)
     })
 }});
+
+$.widget("custom.catcomplete33", $.ui.autocomplete, {_renderMenu: function (g, h) {
+    var i = this, j = "";
+    $.each(h, function (k, l) {
+        i._renderItem(g, l)
+    })
+}});
+
+function bindAutoComplete33() {
+    $("#ship_driver_to").catcomplete33({source: './index.php?s=/ShipmentBook/getDriver', minLength: 1, delay: 0, select: function (h, i) {
+		$("#ship_driver_to").val(i.item.driver_name);
+        $("#ship_driver_car_no").val(i.item.driver_car_no);
+        $("#ship_driver_to").focus();
+    }})
+};
+bindAutoComplete33();
+
+
 bindAutoComplete22();
+
 
 $("#ship_input_date").datepicker();
 $("#ship_deliver_date").datepicker();

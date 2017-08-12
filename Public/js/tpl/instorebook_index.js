@@ -108,7 +108,7 @@ function bindAutoComplete(g) {
         $("#iss_plancount_" + g).focus()
     }})
 };
-$(".btn").button();
+
 
 function bindAutoComplete22() {
     $("#ism_sellerunit").catcomplete22({source: './index.php?s=/InstoreBook/autoSelect22', minLength: 1, delay: 0, select: function (g, h) {
@@ -121,5 +121,6 @@ $.widget("custom.catcomplete22", $.ui.autocomplete, {_renderMenu: function (g, h
         i._renderItem(g, l)
     })
 }});
+$(".btn").button();
 bindAutoComplete22();
 $("#ism_danju_date").datepicker();
