@@ -15,12 +15,13 @@
             page-break-after: always;
         }
     </style>
-	<style> 
+	<style>
+	html{-webkit-text-size-adjust:none;}
 	.div-a{ float:left;width:95%;} 
 	.div-b{ float:left;width:5%;}
 	
-	.div-c{ float:left;width:20%;} 
-	.div-d{ float:left;width:80%;}
+	.div-c{ float:left;width:7%;font-size:10px;} 
+	.div-d{ float:left;width:93%;font-size:10px;}
 	.shuli{ margin:0 auto;width:20px;line-height:24px;} 
 	</style> 
 	
@@ -48,13 +49,13 @@
 
 <div class="container">
   <div class="div-a">
-  <div align="center"><font size="5" color="black">海南佳众科技有限公司</font></div>
+  <div align="center"><font size="2" color="black">海南佳众科技有限公司</font></div>
   
-  <div align="center"><font size="3" color="black"><b>货物托运单</b></font></div>
-  <p align="center" style="font-size:7px;-webkit-text-size-adjust:none">地址:海口市粤海大道海口火车站19道集装箱货场 电话:0898-31684052 13825138001 传真:0898-31684052</p>
+  <div align="center"><font size="1" color="black"><b>货物托运单</b></font></div>
+  <p align="center" style="font-size:10px">地址:海口市粤海大道海口火车站19道集装箱货场 电话:0898-31684052 13825138001 传真:0898-31684052</p>
   
   <form action="__URL__/doApprove" method="post">  
-      <table width="100%" style="border-collapse:separate; border-spacing:0px 10px;" class="datalist fixwidth">
+      <table width="100%" style="border-collapse:separate; border-spacing:0px 4px;" class="datalist fixwidth">
         <tr>
 			<td width="10%" align="right">收货单位：</td>
 			<td width="25"><?php echo $main['ship_customer'] ?></td>
@@ -178,18 +179,15 @@
 			<td width="50%"></td>
 			<td width="50%" align="left">备注：箱体、封条完好相符</td>
 		  </tr>
-		  <br>
-		  <tr>
-			<td colspan="2">
-			<p>备注：</p>
-			<ol>
-				<li>货方严格按交通部限制重量装货、不超载、不夹运未经政府部门许可的货物，如造成罚款和扣货等责任由货方自理；</li>
-				<li>货方自行装箱、点数、施封，承运人以铅封完好作为唯一的交货凭证，司机不得自行施铅封；</li>
-				<li>如果收货人签收时未提出异议，则视为确认收到货物时箱体、封条完好相符。</li>
-			</ol>
-			</td>
-		  </tr>
 	  </table>
+	  <div>
+		<div class="div-c" align="right">备注：</div>
+		<div class="div-d" align="left">
+			1.货方严格按交通部限制重量装货、不超载、不夹运未经政府部门许可的货物，如造成罚款和扣货等责任由货方自理<br>2.货方自行装箱、点数、施封，承运人以铅封完好作为唯一的交货凭证，司机不得自行施铅封<br>3.如果收货人签收时未提出异议，则视为确认收到货物时箱体、封条完好相符
+			
+		</div>
+	  
+	  </div>
 	</div>
       <div class="noPrint" align="center">
           <input class="btn" type="button" value="编辑"  onclick="editIN(<?php echo $main["ship_id"]; ?>)"/>
@@ -200,7 +198,7 @@
   </form>
   </div>
   <div class="div-b" align="center">
-  <div>一<br>联<br>：<br>公司<br>︵<br>白<br>︶<br>二<br>联<br>：<br>财务<br>︵<br>黄<br>︶<br>三<br>联<br>：<br>客户<br>︵<br>红<br>︶<br>四<br>联<br>：<br>吊车<br>︵<br>绿<br>︶<br>
+  <div>一联<br>：<br>公司<br>︵<br>白<br>︶<br>二联<br>：<br>财务<br>︵<br>黄<br>︶<br>三联<br>：<br>客户<br>︵<br>红<br>︶<br>四联<br>：<br>吊车<br>︵<br>绿<br>︶<br>
 	</div>
   </div>
 </div>
