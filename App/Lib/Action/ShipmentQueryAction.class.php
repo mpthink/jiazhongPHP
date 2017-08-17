@@ -71,12 +71,12 @@ class ShipmentQueryAction extends AppAction{
         }
 		
 		
-        $list=$main_model->where($map)->field('ship_id')->select();
+        $list=$main_model->join('twms_shipment_domain on ship_deliver_domain=domain_id')->where($map)->field('ship_id')->select();
         $count=count($list);
         $Page = new Page($count,C('PAGE_SIZE'));
         $show = $Page->show();
         $this->assign('page',$show);
-        $shiplist=$main_model->where($map)->order("ship_status asc,ship_id desc")->limit($Page->firstRow.','.$Page->listRows)->select();
+        $shiplist=$main_model->join('twms_shipment_domain on ship_deliver_domain=domain_id')->where($map)->order("ship_status asc,ship_id desc")->limit($Page->firstRow.','.$Page->listRows)->select();
 
         $this->assign("searchBy",$_GET['searchBy']);
         $this->assign("keyword",$_GET['keyword']);

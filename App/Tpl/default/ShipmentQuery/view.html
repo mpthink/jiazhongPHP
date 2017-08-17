@@ -48,43 +48,21 @@
 <body>	
 
 <div class="container">
-  <div class="div-a">
-  <div align="center"><font size="2" color="black">海南佳众科技有限公司</font></div>
   
-  <div align="center"><font size="1" color="black"><b>货物托运单</b></font></div>
-  <p align="center" style="font-size:10px">地址:海口市粤海大道海口火车站19道集装箱货场 电话:0898-31684052 13825138001 传真:0898-31684052</p>
+  <div align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5" color="black">海南佳众科技有限公司</font>
+		<font size="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;流水编号：<?php echo $main['ship_sn'] ?></font>
+  </div>
+  <div class="div-a">
+  <div align="center"><font size="3" color="black"><b>货物托运单</b></font></div>
+  
+  <p align="center" style="font-size:10px">地址:海口市粤海大道海口火车站19道集装箱货场</p>
+  <p align="center" style="font-size:10px">电话:0898-31684052 13825138001</p>
   
   <form action="__URL__/doApprove" method="post">  
       <table width="100%" style="border-collapse:separate; border-spacing:0px 4px;" class="datalist fixwidth">
         <tr>
 			<td width="10%" align="right">收货单位：</td>
-			<td width="25"><?php echo $main['ship_customer'] ?></td>
-			<td width="15%" align="right">最终目的地：</td>
-			<td width="20%"><?php echo $main['ship_final_address'] ?></td>
-			<td width="10%" align="right">填表日期：</td>
-			<td width="15%" align="left"><?php 
-				if($main['ship_input_date']==null||$main['ship_input_date']=="0000-00-00 00:00:00"){
-					echo "";
-				}else{
-					echo substr($main['ship_input_date'],0,10);
-				}
-				?></td>
-		</tr>
-				
-		<tr>
-			<td width="10%" align="right">车号：</td>
-			<td width="25%"><?php echo $main['ship_car_no'] ?></td>
-			<td width="15%" align="right">柜号1：</td>
-			<td width="20%"><?php echo $main['ship_box_no1'] ?></td>
-			<td width="10%" align="right">柜号2：</td>
-			<td width="15%"><?php echo $main['ship_box_no2'] ?></td>
-		</tr>
-
-		<tr>
-			<td width="10%" align="right">收货地址：</td>
-			<td width="25%"><?php echo $main['ship_customer_address'] ?></td>
-			<td width="15%" align="right">联系人/电话：</td>
-			<td width="20%"><?php echo $main['ship_customer_info'] ?></td>
+			<td width="65" colspan="3"><?php echo $main['ship_customer'] ?></td>
 			<td width="10%" align="right">送货日期：</td>
 			<td width="15%" align="left"><?php 
 				if($main['ship_deliver_date']==null||$main['ship_deliver_date']=="0000-00-00 00:00:00"){
@@ -93,15 +71,77 @@
 					echo substr($main['ship_deliver_date'],0,10);
 				}
 				?></td>
+
+		</tr>
+				
+		<tr>
+			<td width="10%" align="right">车号：</td>
+			<td width="25%"><?php echo $main['ship_car_no'] ?></td>
+			
+			<?php if(substr($main['ship_box_no1'],0,1)=="7"){  ?>
+			<td width="15%" align="right">40尺：</td>
+			<td width="20%"><?php echo $main['ship_box_no1']; ?></td>
+			<td width="10%" align="right"></td>
+			<td width="15%">
+			</td>
+			
+			<?php }else{  ?>
+			<td width="15%" align="right"></td>
+			<td width="20%"></td>
+			<td width="10%" align="right">20尺：</td>
+			<td width="15%">柜号1:<?php echo $main['ship_box_no1']; ?><br>
+							柜号2:<?php echo $main['ship_box_no2']; ?>
+			</td>
+			
+			<?php } ?>
+			
+		</tr>
+
+		<tr>
+			<td width="10%" align="right">收货地址：</td>
+			<td width="65%" colspan="2"><?php echo $main['ship_customer_address'] ?></td>
+			<td width="10%" align="right">联系人/电话：</td>
+			<td width="15%" colspan="2"><?php echo $main['ship_customer_info'] ?></td>
 		</tr>
 		
 		<tr>
-			<td width="10%" align="right">送货司机：</td>
-			<td width="25%"><?php echo $main['ship_driver_to'] ?></td>
-			<td width="15%" align="right">送货车牌：</td>
-			<td width="20%"><?php echo $main['ship_driver_car_no'] ?></td>
-			<td width="10%" align="right">送货区域：</td>
-			<td width="15%" align="left"><?php echo $main['domain_name'] ?>
+			<td width="10%" align="right">装货日期：</td>
+			<td width="25%">
+				<?php 
+				if($main['ship_load_date']==null||$main['ship_load_date']=="0000-00-00 00:00:00"){
+					echo "";
+				}else{
+					echo substr($main['ship_load_date'],0,10);
+				}
+				?>
+			</td>
+			
+			<td width="15%" align="right">到站日期：</td>
+			<td width="20%" align="left"><?php 
+				
+				if($main['ship_arrive_date']==null||$main['ship_arrive_date']=="0000-00-00 00:00:00"){
+					echo "";
+				}else{
+					echo substr($main['ship_arrive_date'],0,10);
+				}
+				?></td>
+				<td width="10%" align="right"></td>
+			<td width="15%">
+			</td>
+		</tr>
+		
+		<tr>
+             <td width="10%" align="right">单据备注：</td>
+             <td width="85" colspan="5"><?php echo $main['ship_remark'] ?></td>
+         </tr>
+		
+		<tr>
+			<td style="border-bottom:1px dashed #ccc" width="10%" align="right">送货司机：</td>
+			<td style="border-bottom:1px dashed #ccc" width="25%"><?php echo $main['ship_driver_to'] ?></td>
+			<td style="border-bottom:1px dashed #ccc" width="15%" align="right">送货车牌：</td>
+			<td style="border-bottom:1px dashed #ccc" width="20%"><?php echo $main['ship_driver_car_no'] ?></td>
+			<td style="border-bottom:1px dashed #ccc" width="10%" align="right">送货区域：</td>
+			<td style="border-bottom:1px dashed #ccc" width="15%" align="left"><?php echo $main['domain_name'] ?>
 			</td>
 		</tr>
 		
@@ -122,30 +162,7 @@
 			?></td>
 		</tr>
 		
-		<tr>
-			<td width="10%" align="right">流水编号：</td>
-			<td width="25%">
-				<?php echo $main['ship_sn'] ?>
-			</td>
-			<td width="15%" align="right">装货日期：</td>
-			<td width="20%"><?php 
-				if($main['ship_load_date']==null||$main['ship_load_date']=="0000-00-00 00:00:00"){
-					echo "";
-				}else{
-					echo substr($main['ship_load_date'],0,10);
-				}
-			?>
-			</td>
-			<td width="10%" align="right">到站日期：</td>
-			<td width="15%" align="left"><?php 
-				
-				if($main['ship_arrive_date']==null||$main['ship_arrive_date']=="0000-00-00 00:00:00"){
-					echo "";
-				}else{
-					echo substr($main['ship_arrive_date'],0,10);
-				}
-				?></td>
-		</tr>
+		
 		
 		<tr class="noPrint">
              <td width="10%" align="right">单据状态：</td>
@@ -157,10 +174,7 @@
 			 </td>
          </tr>
 		
-         <tr>
-             <td width="10%" align="right">单据备注：</td>
-             <td width="85" colspan="5"><?php echo $main['ship_remark'] ?></td>
-         </tr>
+         
 
 
 
@@ -175,11 +189,8 @@
 				收货人签字/盖章：
 			</td>
 		  </tr>
-		  <tr>
-			<td width="50%"></td>
-			<td width="50%" align="left">备注：箱体、封条完好相符</td>
-		  </tr>
 	  </table>
+	  <br>
 	  <div>
 		<div class="div-c" align="right">备注：</div>
 		<div class="div-d" align="left">

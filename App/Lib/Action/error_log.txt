@@ -192,3 +192,61 @@
 [12-Aug-2017 10:52:03 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
 [12-Aug-2017 10:52:03 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
 [12-Aug-2017 10:52:03 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[17-Aug-2017 21:08:41 PRC] PHP Parse error:  syntax error, unexpected end of file in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\835e8e846fe9b5157b83a81e8d6db39f.php on line 228
+[17-Aug-2017 21:08:41 PRC] PHP Stack trace:
+[17-Aug-2017 21:08:41 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[17-Aug-2017 21:08:41 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[17-Aug-2017 21:08:41 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP   5. ShipmentQueryAction->view() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:114
+[17-Aug-2017 21:08:41 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:08:41 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[17-Aug-2017 21:09:37 PRC] PHP Parse error:  syntax error, unexpected end of file in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\835e8e846fe9b5157b83a81e8d6db39f.php on line 228
+[17-Aug-2017 21:09:37 PRC] PHP Stack trace:
+[17-Aug-2017 21:09:37 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[17-Aug-2017 21:09:37 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[17-Aug-2017 21:09:37 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP   5. ShipmentQueryAction->view() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:114
+[17-Aug-2017 21:09:37 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:09:37 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[17-Aug-2017 21:10:35 PRC] PHP Parse error:  syntax error, unexpected end of file in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\835e8e846fe9b5157b83a81e8d6db39f.php on line 228
+[17-Aug-2017 21:10:35 PRC] PHP Stack trace:
+[17-Aug-2017 21:10:35 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[17-Aug-2017 21:10:35 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[17-Aug-2017 21:10:35 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP   5. ShipmentQueryAction->view() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:114
+[17-Aug-2017 21:10:35 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:35 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[17-Aug-2017 21:10:58 PRC] PHP Parse error:  syntax error, unexpected end of file in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\835e8e846fe9b5157b83a81e8d6db39f.php on line 228
+[17-Aug-2017 21:10:58 PRC] PHP Stack trace:
+[17-Aug-2017 21:10:58 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[17-Aug-2017 21:10:58 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[17-Aug-2017 21:10:58 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:58 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:58 PRC] PHP   5. ShipmentQueryAction->view() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:58 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:114
+[17-Aug-2017 21:10:58 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:10:58 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP Parse error:  syntax error, unexpected end of file in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\835e8e846fe9b5157b83a81e8d6db39f.php on line 228
+[17-Aug-2017 21:12:03 PRC] PHP Stack trace:
+[17-Aug-2017 21:12:03 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[17-Aug-2017 21:12:03 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[17-Aug-2017 21:12:03 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP   5. ShipmentQueryAction->view() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:114
+[17-Aug-2017 21:12:03 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[17-Aug-2017 21:12:03 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
