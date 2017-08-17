@@ -260,6 +260,8 @@ class ShipmentQueryAction extends AppAction{
 				$data["ship_remark"]="";
 			}
 			
+			
+			$data["ship_inputer"]=$_SESSION['user']['user_realname'];
 			$data["ship_sn"]='IN-'.date('Ymd-His-').rand(100,999);
 			$model_main->add($data);
 		}	
