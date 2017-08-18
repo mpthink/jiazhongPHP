@@ -17,6 +17,7 @@
     </style>
 	<style>
 	html{-webkit-text-size-adjust:none;}
+	td {font-size:13px;}
 	.div-a{ float:left;width:95%;} 
 	.div-b{ float:left;width:5%;}
 	
@@ -49,22 +50,21 @@
 
 <div class="container">
   
-  <div align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="5" color="black">海南佳众科技有限公司</font>
-		<font size="1">&nbsp;&nbsp;流水编号：<?php echo $main['ship_sn'] ?></font>
+  <div align="center"><font size="5" color="black">海南佳众科技有限公司</font>
   </div>
   <div class="div-a">
-  <div align="center"><font size="3" color="black"><b>货物托运单</b></font></div>
+  <div align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="3" color="black"><b>货物托运单</b></font></div>
   
-  <p align="center" style="font-size:10px">地址:海口市粤海大道海口火车站19道集装箱货场</p>
-  <p align="center" style="font-size:10px">电话:0898-31684052 13825138001</p>
+  <p align="left" style="font-size:12px">地址：海口市粤海大道海口火车站19道集装箱货场</p>
+  <p align="left" style="font-size:12px">电话：0898-31684052  13825138001  18889661219 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="1">流水编号：<?php echo $main['ship_sn'] ?></font></p>
   
   <form action="__URL__/doApprove" method="post">  
       <table width="100%" style="border-collapse:separate; border-spacing:0px 4px;" class="datalist fixwidth">
         <tr>
 			<td width="10%" align="right">收货单位：</td>
-			<td width="65" colspan="3"><?php echo $main['ship_customer'] ?></td>
+			<td width="65" colspan="2"><?php echo $main['ship_customer'] ?></td>
 			<td width="10%" align="right">送货日期：</td>
-			<td width="15%" align="left"><?php 
+			<td width="15%" colspan="2"><?php 
 				if($main['ship_deliver_date']==null||$main['ship_deliver_date']=="0000-00-00 00:00:00"){
 					echo "";
 				}else{
@@ -76,20 +76,15 @@
 				
 		<tr>
 			<td width="10%" align="right">车号：</td>
-			<td width="25%"><?php echo $main['ship_car_no'] ?></td>
+			<td width="65" colspan="2"><?php echo $main['ship_car_no'] ?></td>
 			
 			<?php if(substr($main['ship_box_no1'],0,1)=="7"){  ?>
-			<td width="15%" align="right">40尺：</td>
-			<td width="20%"><?php echo $main['ship_box_no1']; ?></td>
-			<td width="10%" align="right"></td>
-			<td width="15%">
-			</td>
+			<td width="10%" align="right">40尺：</td>
+			<td width="15%" colspan="2"><?php echo $main['ship_box_no1']; ?></td>
 			
 			<?php }else{  ?>
-			<td width="15%" align="right"></td>
-			<td width="20%"></td>
 			<td width="10%" align="right">20尺：</td>
-			<td width="15%">柜号1:<?php echo $main['ship_box_no1']; ?><br>
+			<td width="15%" colspan="2">柜号1:<?php echo $main['ship_box_no1']; ?><br>
 							柜号2:<?php echo $main['ship_box_no2']; ?>
 			</td>
 			
@@ -106,7 +101,7 @@
 		
 		<tr>
 			<td width="10%" align="right">装货日期：</td>
-			<td width="25%">
+			<td width="65%" align="left" colspan="2">
 				<?php 
 				if($main['ship_load_date']==null||$main['ship_load_date']=="0000-00-00 00:00:00"){
 					echo "";
@@ -116,8 +111,8 @@
 				?>
 			</td>
 			
-			<td width="15%" align="right">到站日期：</td>
-			<td width="20%" align="left"><?php 
+			<td width="10%" align="right">到站日期：</td>
+			<td width="15%" align="left" colspan="2"><?php 
 				
 				if($main['ship_arrive_date']==null||$main['ship_arrive_date']=="0000-00-00 00:00:00"){
 					echo "";
@@ -125,9 +120,6 @@
 					echo substr($main['ship_arrive_date'],0,10);
 				}
 				?></td>
-				<td width="10%" align="right"></td>
-			<td width="15%">
-			</td>
 		</tr>
 		
 		<tr>
