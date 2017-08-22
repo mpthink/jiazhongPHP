@@ -250,3 +250,47 @@
 [17-Aug-2017 21:12:03 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
 [17-Aug-2017 21:12:03 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
 [17-Aug-2017 21:12:03 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[22-Aug-2017 17:14:55 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\4a113864552aec9c1e9bf09025dd6206.php on line 138
+[22-Aug-2017 17:14:55 PRC] PHP Stack trace:
+[22-Aug-2017 17:14:55 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[22-Aug-2017 17:14:55 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[22-Aug-2017 17:14:55 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP   5. ShipmentQueryAction->index() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:84
+[22-Aug-2017 17:14:55 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:55 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[22-Aug-2017 17:14:56 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\4a113864552aec9c1e9bf09025dd6206.php on line 138
+[22-Aug-2017 17:14:56 PRC] PHP Stack trace:
+[22-Aug-2017 17:14:56 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[22-Aug-2017 17:14:56 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[22-Aug-2017 17:14:56 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:56 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:56 PRC] PHP   5. ShipmentQueryAction->index() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:56 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:84
+[22-Aug-2017 17:14:56 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:14:56 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\4a113864552aec9c1e9bf09025dd6206.php on line 113
+[22-Aug-2017 17:15:08 PRC] PHP Stack trace:
+[22-Aug-2017 17:15:08 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[22-Aug-2017 17:15:08 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[22-Aug-2017 17:15:08 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP   5. ShipmentQueryAction->index() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:84
+[22-Aug-2017 17:15:08 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP   9. TemplateThink->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:08 PRC] PHP  10. ThinkTemplate->load() D:\wamp64\www\jiazhongPHP\ThinkPHP\Lib\Think\Util\Template\TemplateThink.class.php:45
+[22-Aug-2017 17:15:09 PRC] PHP Parse error:  syntax error, unexpected '}' in D:\wamp64\www\jiazhongPHP\App\Runtime\Cache\4a113864552aec9c1e9bf09025dd6206.php on line 113
+[22-Aug-2017 17:15:09 PRC] PHP Stack trace:
+[22-Aug-2017 17:15:09 PRC] PHP   1. {main}() D:\wamp64\www\jiazhongPHP\index.php:0
+[22-Aug-2017 17:15:09 PRC] PHP   2. App::run() D:\wamp64\www\jiazhongPHP\index.php:20
+[22-Aug-2017 17:15:09 PRC] PHP   3. App::exec() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:09 PRC] PHP   4. call_user_func:{D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2}() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:09 PRC] PHP   5. ShipmentQueryAction->index() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:09 PRC] PHP   6. Action->display() D:\wamp64\www\jiazhongPHP\App\Lib\Action\ShipmentQueryAction.class.php:84
+[22-Aug-2017 17:15:09 PRC] PHP   7. View->display() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2
+[22-Aug-2017 17:15:09 PRC] PHP   8. View->fetch() D:\wamp64\www\jiazhongPHP\App\Runtime\~runtime.php:2

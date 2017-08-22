@@ -104,7 +104,14 @@
             <td align="center">
                 <?php
                 if($row["ship_status"]==1){echo "<font color='#0000FF'>已审核</font>";};
-                if($row["ship_status"]==0){echo "<font color='red'>未审核</font>";};
+                if($row["ship_status"]==0){ 
+					if (strstr($row["ship_remark"], '扣货') !== false){
+						echo "<font color='red'>未审核|扣货</font>";
+					}else{
+						echo "<font color='red'>未审核</font>";
+					}
+				}
+				
 
             ?></td>
 

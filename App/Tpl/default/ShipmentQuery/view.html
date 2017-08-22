@@ -195,7 +195,11 @@
 	</div>
       <div class="noPrint" align="center">
           <input class="btn" type="button" value="编辑"  onclick="editIN(<?php echo $main["ship_id"]; ?>)"/>
-          <input class="btn" type="button" value="审核"  onclick="review(<?php echo $main["ship_id"]; ?>)"/>
+          <input class="btn" type="button" value="审核" <?php 
+		   if (strstr($main["ship_remark"], '扣货') !== false){
+			echo "disabled";
+		   }
+		  ?>  onclick="review(<?php echo $main["ship_id"]; ?>)"/>
           <input class="btn" type="button" value="返回"  onclick="window.history.back()"/>
           <INPUT id="btnPrint" class="btn" type="button" value="打印" name="Print" onclick="return btnPrint_onclick()">
       </div>
