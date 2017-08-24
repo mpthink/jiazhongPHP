@@ -23,7 +23,8 @@
 	
 	.div-c{ float:left;width:7%;font-size:12px;} 
 	.div-d{ float:left;width:93%;font-size:12px;}
-	.shuli{ margin:0 auto;width:20px;line-height:24px;} 
+	.shuli{ margin:0 auto;width:20px;line-height:24px;}
+	
 	</style> 
 	
     <script id=clientEventHandlersJS language=javascript>
@@ -59,7 +60,7 @@
   <p align="left" style="font-size:12px">电话：0898-31684052  13825138001  18889661219 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="1">流水编号：<?php echo $main['ship_sn'] ?></font></p>
   
   <form action="__URL__/doApprove" method="post">  
-      <table width="100%" style="border-collapse:separate; border-spacing:0px 4px;" class="datalist fixwidth">
+      <table width="100%" style="border-collapse:collapse; border-spacing:0px 0px;" class="datalist fixwidth" rules="rows">
         <tr>
 			<td width="10%" align="right">收货单位：</td>
 			<td width="65" colspan="2"><?php echo $main['ship_customer'] ?></td>
@@ -183,11 +184,11 @@
 	  <br>&nbsp;
 	  <table width="100%">
 		  <tr>
-			<td width="50%" align="center" style="font-size:16px;">制单人：&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;
+			<td width="50%" align="center" style="font-size:16px;">制单人：<u>&nbsp;&nbsp;<?php echo $main['ship_inputer'] ?>&nbsp;&nbsp;</u>
 			  <input name='ship_id' type='hidden' value='<?php echo $main["ship_id"]; ?>'>
 			  </td>
 			<td width="50%" align="left" style="font-size:16px;">
-				收货人签字/盖章：
+				收货人签字/盖章： <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
 			</td>
 		  </tr>
 	  </table>
