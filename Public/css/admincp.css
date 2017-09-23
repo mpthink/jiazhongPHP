@@ -178,6 +178,14 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus {
 	text-align:left;
 	background:url(../images/bg_repx_hb.gif) repeat-x;
 }
+
+/* box */
+.containerTemp {
+	padding:2px;
+	text-align:left;
+	background:url(../images/bg_repx_hb.gif) repeat-x;
+}
+
 .note {
 	margin:5px 0;
 	padding:10px;
