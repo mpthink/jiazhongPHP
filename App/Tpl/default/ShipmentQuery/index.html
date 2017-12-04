@@ -51,7 +51,8 @@
            <select name="searchBy" id="searchBy">
                <option value="ship_customer" <?php if($searchBy=='ship_customer'){echo "selected='true'";}; ?>>收货单位</option>
                <option value="ship_car_no" <?php if($searchBy=='ship_car_no'){echo "selected='true'";}; ?>>车号</option>
-			   <option value="ship_sn" <?php if($searchBy=='ship_sn'){echo "selected='true'";}; ?>>流水编号</option>
+			   <option value="ship_box_no1" <?php if($searchBy=='ship_box_no1'){echo "selected='true'";}; ?>>柜号1</option>
+			   <option value="ship_box_no2" <?php if($searchBy=='ship_box_no2'){echo "selected='true'";}; ?>>柜号2</option>
            </select>
            <input type="text" name="keyword" id="keyword" value="<?php echo $keyword; ?>" size="30"/>&nbsp;&nbsp;
            <input type="button" id="fastSearch" value="快查" class="btn"/>&nbsp;&nbsp;

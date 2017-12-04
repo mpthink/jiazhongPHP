@@ -128,7 +128,9 @@ class ShipmentQueryAction extends AppAction{
         $model_main->save($_POST);
         import('@.ORG.Util.SysLog');
         SysLog::writeLog("编辑出库单据");
-        $this->redirect("index");
+		$main=$model_main->join('twms_shipment_domain on ship_deliver_domain=domain_id')->where(array("ship_id"=>$_POST['ship_id']))->find();
+        $this->assign("main",$main);
+        $this->display('view');
     }
 
 	//导入excel
