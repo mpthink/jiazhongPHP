@@ -263,7 +263,11 @@ class ShipmentQueryAction extends AppAction{
 			
 			$data["ship_inputer"]=$_SESSION['user']['user_realname'];
 			$data["ship_sn"]='IN-'.date('Ymd-His-').rand(100,999);
-			$model_main->add($data);
+			if($data["ship_customer"]=="" ||$data["ship_customer"]==null){
+				continue;
+			}else{
+				$model_main->add($data);
+			}
 		}	
 	}
 	
